@@ -1,0 +1,40 @@
+.budget {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.budget h3 {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+.budget-info {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.budget-info .budget-type {
+  font-size: 14px;
+  color: #999;
+}
+
+.budget-info .budget-value {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #eee;
+  margin-top: 10px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #0077c2;
+}
