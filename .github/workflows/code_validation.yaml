@@ -1,0 +1,41 @@
+name: Code validation
+
+on:
+  pull_request:
+    branches:
+      - staging
+  push:
+    branches:
+      - develop
+
+jobs:
+  Code-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+      - name: Check dependencies
+        run: pnpm audit
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Testing
+        run: pnpm test
+      - name: Quality gate
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Build
+        run: pnpm build
