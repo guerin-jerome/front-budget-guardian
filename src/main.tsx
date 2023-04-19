@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./global.css";
+import { ViewBudgetTracking } from "./containers/ViewBudgetTracking/ViewBudgetTracking";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <p>Hello world !</p>
+    <ViewBudgetTracking />
   </React.StrictMode>
 );
