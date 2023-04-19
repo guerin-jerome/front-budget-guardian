@@ -1,0 +1,7 @@
+Reste à faire :
+- TU composants
+- TI global
+- router
+- services
+- msw
+- externaliser les composants -> Typography (Text, Title...), Progress, Card...
