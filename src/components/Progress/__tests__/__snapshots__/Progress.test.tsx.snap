@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Progress /> > matchs snapshot 1`] = `
+<div>
+  <div
+    class="progress-bar"
+  >
+    <div
+      class="progress"
+      style="width: 10%;"
+    />
+  </div>
+</div>
+`;
