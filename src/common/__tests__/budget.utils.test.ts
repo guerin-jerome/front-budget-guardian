@@ -9,7 +9,7 @@ import {
   MOCK_BUDGETS,
   MOCK_BUDGET_FULL_CONSUMMED,
   MOCK_BUDGET_SAVED,
-} from "../../mocks/budgets.mock";
+} from "../../mocks/budget.mock";
 
 describe("Suite de tests budget.utils", () => {
   describe("calculateBudgetConsumedPercentage()", () => {
@@ -30,7 +30,7 @@ describe("Suite de tests budget.utils", () => {
 
   describe("getLibelleCurrentValue()", () => {
     it("should return 5/100€ if budget type isnt saved", () => {
-      expect(getLibelleCurrentValue(MOCK_BUDGET)).toBe("5,6/100€");
+      expect(getLibelleCurrentValue(MOCK_BUDGET)).toBe("5,6€/100€");
     });
 
     it("should return 200€ if budget type is saved", () => {
