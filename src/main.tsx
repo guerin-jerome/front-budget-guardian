@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ViewBudgetTracking } from "./containers/ViewBudgetTracking/ViewBudgetTracking";
+import { ViewExpenseTracking } from "./containers/ViewExpenseTracking/ViewExpenseTracking";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ViewBudgetTracking />
+    <ViewExpenseTracking />
   </React.StrictMode>
 );
