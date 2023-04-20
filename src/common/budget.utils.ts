@@ -30,7 +30,7 @@ export const getLibelleCurrentValue = ({
   base,
 }: TBudget): string =>
   type !== EBudgetType.SAVED && spending
-    ? `${replacePointByComma(spending)}/${base}€`
+    ? `${replacePointByComma(spending)}€/${base}€`
     : `${base}€`;
 
 /**
