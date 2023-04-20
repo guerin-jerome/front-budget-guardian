@@ -153,7 +153,6 @@ packages:
     os: [android]
     requiresBuild: true
     dev: true
-    optional: true
 
   /@esbuild/android-x64@0.17.17:
     resolution:
