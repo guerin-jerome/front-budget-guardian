@@ -1,5 +1,4 @@
 Reste à faire :
-- router
 - services
 - msw
 - import alias baseurl tsconfig
