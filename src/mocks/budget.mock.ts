@@ -11,7 +11,7 @@ export const MOCK_BUDGET: TBudget = {
 
 export const MOCK_BUDGET_SAVED: TBudget = {
   id: 2,
-  name: "Épargne",
+  name: "Placement financier",
   type: EBudgetType.SAVED,
   base: 200,
 };
