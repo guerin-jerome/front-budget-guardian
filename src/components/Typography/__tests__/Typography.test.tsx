@@ -13,7 +13,7 @@ describe("<Typography />", () => {
 
     it("level 1 - renders well", () => {
       render(<Title level={1}>First title</Title>);
-      const titleText = screen.getByText("First title");
+      const titleText = screen.getByRole("heading", { name: "First title" });
       expect(titleText).toBeDefined();
     });
 
@@ -24,7 +24,7 @@ describe("<Typography />", () => {
 
     it("level 2 - renders well", () => {
       render(<Title level={2}>Second title</Title>);
-      const titleText = screen.getByText("Second title");
+      const titleText = screen.getByRole("heading", { name: "Second title" });
       expect(titleText).toBeDefined();
     });
 
@@ -35,7 +35,7 @@ describe("<Typography />", () => {
 
     it("level 3 - renders well", () => {
       render(<Title level={3}>Third title</Title>);
-      const titleText = screen.getByText("Third title");
+      const titleText = screen.getByRole("heading", { name: "Third title" });
       expect(titleText).toBeDefined();
     });
   });
