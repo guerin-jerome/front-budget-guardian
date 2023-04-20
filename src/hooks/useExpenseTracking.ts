@@ -1,9 +1,9 @@
 import { useMemo } from "react";
-import { MOCK_BUDGETS } from "../mocks/budgets.mock";
+import { MOCK_BUDGETS } from "../mocks/budget.mock";
 import { TBudget } from "../interfaces/TBudget";
 import { calculateTotalRemaining } from "../common/budget.utils";
 
-export const useBudgetTracking = () => {
+export const useExpenseTracking = () => {
   const budgets: TBudget[] = MOCK_BUDGETS;
 
   const totalRemaining: string = useMemo(

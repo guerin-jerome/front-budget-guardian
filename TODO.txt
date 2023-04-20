@@ -4,4 +4,4 @@ Reste à faire :
 - router
 - services
 - msw
-- externaliser les composants -> Typography (Text, Title...), Progress, Card...
+- import alias baseurl tsconfig

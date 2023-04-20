@@ -1,6 +1,6 @@
-import { useCurrentBudget } from "../../hooks/useCurrentBudget";
-import { TBudget } from "../../interfaces/TBudget";
-import "./style.css";
+import { useCurrentBudget } from "../../../hooks/useCurrentBudget";
+import { TBudget } from "../../../interfaces/TBudget";
+import "./currentBudget.css";
 
 export const ViewCurrentBudget = (budget: TBudget) => {
   const { name, type } = budget;
