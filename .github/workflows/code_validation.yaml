@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Testing
-        run: pnpm test
+        run: pnpm coverage
       - name: Quality gate
         uses: SonarSource/sonarcloud-github-action@master
         env:
