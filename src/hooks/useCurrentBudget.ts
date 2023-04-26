@@ -3,7 +3,7 @@ import {
   calculateBudgetConsumedPercentage,
   getLibelleCurrentValue,
 } from "../common/budget.utils";
-import { TBudget } from "../interfaces/TBudget";
+import { TBudget } from "@/interfaces/TBudget";
 
 export const useCurrentBudget = (budget: TBudget) => {
   const libelleCurrentValue: string = useMemo(
