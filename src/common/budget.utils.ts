@@ -1,4 +1,4 @@
-import { TBudget } from "../interfaces/TBudget";
+import { TBudget } from "@/interfaces/TBudget";
 import { EBudgetType } from "./constants/budget";
 import {
   calculatePercentageFloored,

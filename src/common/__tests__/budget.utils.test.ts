@@ -9,7 +9,7 @@ import {
   MOCK_BUDGETS,
   MOCK_BUDGET_FULL_CONSUMMED,
   MOCK_BUDGET_SAVED,
-} from "../../mocks/budget.mock";
+} from "@/mocks/budget.mock";
 
 describe("Suite de tests budget.utils", () => {
   describe("calculateBudgetConsumedPercentage()", () => {
