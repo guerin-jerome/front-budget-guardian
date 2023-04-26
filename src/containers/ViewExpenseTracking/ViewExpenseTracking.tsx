@@ -1,6 +1,6 @@
 import { ViewCurrentBudget } from "./ViewCurrentBudget/ViewCurrentBudget";
-import { Typography } from "../../components/Typography/Typography";
-import { useExpenseTracking } from "../../hooks/useExpenseTracking";
+import { Typography } from "@/components/Typography/Typography";
+import { useExpenseTracking } from "@/hooks/useExpenseTracking";
 import { EXPENSE_TRACKING_TITLE } from "./expenseTracking.label";
 import "./expenseTracking.css";
 
