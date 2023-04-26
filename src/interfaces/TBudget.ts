@@ -1,4 +1,4 @@
-import { EBudgetType } from "../common/constants/budget";
+import { EBudgetType } from "@/common/constants/budget";
 
 export type TBudget = {
   id: number;
