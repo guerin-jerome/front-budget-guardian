@@ -11,5 +11,15 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: "./src/setupTests.ts",
+    coverage: {
+      all: true,
+      exclude: [
+        "**/interfaces/**/*.{ts,tsx}",
+        "**/*.test.{ts,tsx}",
+        "**/*.type.ts",
+        "*.config.ts",
+        "src/main.tsx",
+      ],
+    },
   },
 });
