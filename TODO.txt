@@ -1,6 +1,5 @@
 Reste à faire :
 - services
 - msw
-- import alias baseurl tsconfig
 - config coverage
 - config 80% sonarqube
