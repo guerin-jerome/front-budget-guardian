@@ -1,5 +1,5 @@
+import { ViewExpenseTracking } from "@/containers/ViewExpenseTracking/ViewExpenseTracking";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ViewExpenseTracking } from "../containers/ViewExpenseTracking/ViewExpenseTracking";
 
 const router = createBrowserRouter([
   {

@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect } from "vitest";
 import { ViewCurrentBudget } from "../ViewCurrentBudget";
-import { MOCK_BUDGET, MOCK_BUDGET_SAVED } from "../../../../mocks/budget.mock";
-import { EBudgetType } from "../../../../common/constants/budget";
+import { MOCK_BUDGET, MOCK_BUDGET_SAVED } from "@/mocks/budget.mock";
+import { EBudgetType } from "@/common/constants/budget";
 
 describe("<ViewCurrentBudget />", () => {
   it("matchs snapshot", () => {
