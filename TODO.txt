@@ -4,5 +4,4 @@ Reste à faire :
 - router
 - services
 - msw
-- config coverage
 - config 80% sonarqube
