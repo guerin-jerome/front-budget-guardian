@@ -1,5 +1,4 @@
 Reste à faire :
 - services
 - msw
-- config coverage
 - config 80% sonarqube
