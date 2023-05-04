@@ -501,7 +501,7 @@ packages:
       '@jest/schemas': 29.4.3
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 18.15.11
+      '@types/node': 18.16.3
       '@types/yargs': 17.0.24
       chalk: 4.1.2
     dev: true
