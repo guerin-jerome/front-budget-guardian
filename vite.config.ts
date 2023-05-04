@@ -22,6 +22,9 @@ export default defineConfig({
         "*.config.ts",
         "src/main.tsx",
       ],
+      reporter: ["text", "lcov"],
     },
+    reporters: ["default", "vitest-sonar-reporter"],
+    outputFile: "./coverage/test-report.xml",
   },
 });
