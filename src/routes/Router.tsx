@@ -1,15 +1,15 @@
-import { ViewExpenseTracking } from "@/containers/ViewExpenseTracking/ViewExpenseTracking";
-import { ViewProductPage } from "@/containers/ViewProductPage/ViewProductPage";
+import { ProductPage } from "@/ProductPage";
+import { ExpenseTracking } from "@/features/expenseTracking/interfaces";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ViewProductPage />,
+    element: <ProductPage />,
   },
   {
     path: "/home/expense-tracking",
-    element: <ViewExpenseTracking />,
+    element: <ExpenseTracking />,
   },
 ]);
 

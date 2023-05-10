@@ -15,9 +15,10 @@ export default defineConfig({
     coverage: {
       all: true,
       exclude: [
-        "**/interfaces/**/*.{ts,tsx}",
-        "src/common/test/*.{ts,tsx}",
-        "**/*.test.{ts,tsx}",
+        "coverage/**",
+        "dist/**",
+        "src/mocks/*.ts",
+        "**/__tests__/**",
         "**/*.type.ts",
         "*.config.ts",
         "src/main.tsx",
