@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
-export type TWithChildren = {
+export type HasChildren = {
   children: ReactNode;
 };
