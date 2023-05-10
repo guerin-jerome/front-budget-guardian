@@ -1,5 +1,5 @@
 import { expect, describe, test } from "vitest";
-import { FIXE_BUDGET, SAVED_BUDGET, VARIABLE_BUDGET } from "@/mocks/budget";
+import { SAVED_BUDGET, VARIABLE_BUDGET } from "@/mocks/budget";
 import { calculateTotalRemaining } from "../calculateTotalRemaining";
 import { Budget, BudgetType } from "@/entities/Budget";
 

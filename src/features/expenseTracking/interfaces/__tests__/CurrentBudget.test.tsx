@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import { test, expect, describe } from "vitest";
-import { EXPENSE_TRACKING_TITLE } from "../label";
 import { CurrentBudget } from "../currentBudget/CurrentBudget";
 import { FIXE_BUDGET, SAVED_BUDGET, VARIABLE_BUDGET } from "@/mocks/budget";
 import { BudgetTypeLibelle } from "@/entities/Budget";
