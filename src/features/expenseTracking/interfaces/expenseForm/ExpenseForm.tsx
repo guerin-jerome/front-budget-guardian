@@ -59,7 +59,7 @@ export const ExpenseForm = () => {
         <div className="form-actions">
           <Button
             type="submit"
-            onClick={() => {}}
+            onClick={(e) => e.preventDefault()}
             isIconMode
             appearence={ButtonAppearence.DANGER}
           >
@@ -67,7 +67,7 @@ export const ExpenseForm = () => {
           </Button>
           <Button
             type="submit"
-            onClick={() => {}}
+            onClick={(e) => e.preventDefault()}
             isIconMode
             appearence={ButtonAppearence.SUCCESS}
           >
