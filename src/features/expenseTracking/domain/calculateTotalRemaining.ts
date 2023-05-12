@@ -11,7 +11,7 @@ export const calculateTotalRemaining = (budgets: Budget[]): string => {
   const isPossibleToCalculate =
     budgets.filter(({ type }) => type !== BudgetType.SAVED).length > 0;
 
-  const value = isPossibleToCalculate
+  const value: string = isPossibleToCalculate
     ? budgets
         .filter(({ type }) => type !== BudgetType.SAVED)
         .map(({ base, spending }) => base - spending!)
