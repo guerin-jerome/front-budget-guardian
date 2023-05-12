@@ -1,2 +1,2 @@
-export const repalcePointByComma = (string: string): string =>
-  string.replace(".", ",");
+export const replacePointByComma = (string?: string) =>
+  string?.replace(".", ",");

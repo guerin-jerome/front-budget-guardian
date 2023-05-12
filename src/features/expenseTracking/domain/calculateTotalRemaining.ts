@@ -1,5 +1,5 @@
 import { addition } from "@/common/utils/number";
-import { repalcePointByComma } from "@/common/utils/string";
+import { replacePointByComma } from "@/common/utils/string";
 import { Budget, BudgetType } from "@/entities/Budget";
 
 /**
@@ -20,5 +20,5 @@ export const calculateTotalRemaining = (budgets: Budget[]): string => {
         .toString() + " €"
     : "0.00 €";
 
-  return repalcePointByComma(value);
+  return replacePointByComma(value);
 };
