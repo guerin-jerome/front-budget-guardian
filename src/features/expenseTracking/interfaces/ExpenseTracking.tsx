@@ -5,6 +5,7 @@ import { useExpenseTracking } from "../hooks/useExpenseTracking";
 import { ExpenseForm } from "./expenseForm/ExpenseForm";
 import { HeaderCurrentBudgets } from "./headerCurrentBudgets/HeaderCurrentBudgets";
 import "./style.css";
+import { ExpenseForm } from "./expenseForm/ExpenseForm";
 
 const { Title } = Typography;
 
