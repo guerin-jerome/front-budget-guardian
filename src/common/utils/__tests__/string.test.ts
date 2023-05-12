@@ -11,6 +11,6 @@ describe("replacePointByComma()", () => {
   });
 
   test("with undefined", () => {
-    expect(replacePointByComma(undefined)).toBeUndefined();
+    expect(replacePointByComma()).toBeUndefined();
   });
 });

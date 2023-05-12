@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import { Select } from "../Select";
-import userEvent from "@testing-library/user-event";
 
 describe("<Select />", () => {
   const onChange = vi.fn();
