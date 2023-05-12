@@ -9,7 +9,7 @@ describe("<Card />", () => {
   });
 
   it("renders well", () => {
-    render(<Card>Hello</Card>);
+    render(<Card className="test">Hello</Card>);
     const cardText = screen.getByText("Hello");
     expect(cardText).toBeDefined();
   });

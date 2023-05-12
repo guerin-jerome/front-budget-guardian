@@ -1,5 +1,5 @@
-import { HasChildren } from "../components.type";
+import { PropsWithChildren } from "react";
 
-export type TitleProps = HasChildren & {
+export type TitleProps = PropsWithChildren & {
   level: 1 | 2 | 3;
 };

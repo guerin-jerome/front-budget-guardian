@@ -1,14 +1,15 @@
 import { ProductPage } from "@/ProductPage";
 import { ExpenseTracking } from "@/features/expenseTracking/interfaces";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { PAGES, routes } from "./routes";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: routes[PAGES.PRODUCT],
     element: <ProductPage />,
   },
   {
-    path: "/home/expense-tracking",
+    path: routes[PAGES.EXPENSE_TRACKING],
     element: <ExpenseTracking />,
   },
 ]);

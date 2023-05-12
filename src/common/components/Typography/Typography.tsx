@@ -1,4 +1,4 @@
-import { HasChildren } from "../components.type";
+import { PropsWithChildren } from "react";
 import { TitleProps } from "./typography.type";
 import "./typography.css";
 
@@ -13,13 +13,13 @@ const Title = ({ level, children }: TitleProps) => {
   }
 };
 
-const Text = ({ children }: HasChildren) => <p>{children}</p>;
+const Text = ({ children }: PropsWithChildren) => <p>{children}</p>;
 
-const Muted = ({ children }: HasChildren) => (
+const Muted = ({ children }: PropsWithChildren) => (
   <span className="muted">{children}</span>
 );
 
-const Bold = ({ children }: HasChildren) => (
+const Bold = ({ children }: PropsWithChildren) => (
   <span className="bold">{children}</span>
 );
 

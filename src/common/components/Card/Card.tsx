@@ -1,6 +1,7 @@
-import { HasChildren } from "../components.type";
+import { CardProps } from "./card.type";
+import classNames from "classnames";
 import "./card.css";
 
-export const Card = ({ children }: HasChildren) => (
-  <div className="card">{children}</div>
+export const Card = ({ children, className }: CardProps) => (
+  <div className={classNames("card", className)}>{children}</div>
 );

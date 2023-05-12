@@ -1,12 +1,16 @@
 import { expect, describe, test } from "vitest";
-import { repalcePointByComma } from "../string";
+import { replacePointByComma } from "../string";
 
-describe("repalcePointByComma()", () => {
+describe("replacePointByComma()", () => {
   test("with 0.50", () => {
-    expect(repalcePointByComma("0.50")).toEqual("0,50");
+    expect(replacePointByComma("0.50")).toEqual("0,50");
   });
 
   test("with 100", () => {
-    expect(repalcePointByComma("100")).toEqual("100");
+    expect(replacePointByComma("100")).toEqual("100");
+  });
+
+  test("with undefined", () => {
+    expect(replacePointByComma(undefined)).toBeUndefined();
   });
 });
