@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Select /> > matchs snapshot 1`] = `
+<div>
+  <select
+    id="test"
+    name="test"
+  />
+</div>
+`;

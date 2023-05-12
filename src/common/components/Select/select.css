@@ -1,0 +1,22 @@
+select {
+  padding: 0 35px 0 10px;
+  margin-top: 5px;
+  height: 38px;
+  width: 100%;
+  font-size: 14.5px;
+  font-family: Arial, sans-serif;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+
+  /* Cacher la flèche par défaut */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  /* Ajouter une image de fond personnalisée pour la flèche */
+  background-image: url("./assets/arrow-down.svg");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 50%;
+  background-position-x: calc(100% - 10px);
+}

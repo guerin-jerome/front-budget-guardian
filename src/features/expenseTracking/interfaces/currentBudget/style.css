@@ -1,0 +1,14 @@
+h3 {
+  margin: 0;
+}
+
+.budget-info {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-bar {
+  margin-top: 10px;
+}
