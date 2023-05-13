@@ -6,7 +6,6 @@ import {
   Textbox,
   Card,
 } from "@/common/components";
-import "./style.css";
 import {
   EXPENSE_AMOUNT_LABEL,
   EXPENSE_BUDGET_IMPACTED_LABEL,
@@ -14,9 +13,11 @@ import {
   EXPENSE_DETAILS_LABEL,
 } from "../label";
 import { useExpenseForm } from "../../hooks/useExpenseForm";
+import "./style.css";
 
 export const ExpenseForm = () => {
-  const { budgetsImpactedOptions } = useExpenseForm();
+  const { budgetsImpactedOptions, submitLabelButtons, isMobileDevice } =
+    useExpenseForm();
 
   return (
     <Card className="expense-card">
@@ -59,19 +60,19 @@ export const ExpenseForm = () => {
         <div className="form-actions">
           <Button
             type="submit"
+            isIconMode={!isMobileDevice}
             onClick={(e) => e.preventDefault()}
-            isIconMode
             appearence={ButtonAppearence.DANGER}
           >
-            -
+            {submitLabelButtons.remove}
           </Button>
           <Button
             type="submit"
+            isIconMode={!isMobileDevice}
             onClick={(e) => e.preventDefault()}
-            isIconMode
             appearence={ButtonAppearence.SUCCESS}
           >
-            +
+            {submitLabelButtons.add}
           </Button>
         </div>
       </form>
