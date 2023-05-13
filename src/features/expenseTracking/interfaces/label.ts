@@ -7,6 +7,10 @@ export const EXPENSE_DETAILS_LABEL = "Détails";
 export const EXPENSE_BUDGET_IMPACTED_LABEL = "Budget impacté";
 export const EXPENSE_DATE_LABEL = "Date";
 export const EXPENSE_AMOUNT_LABEL = "Montant";
+export const ADD_EXPENSE_LABEL_MOBILE = "Ajouter";
+export const ADD_EXPENSE_LABEL_DESKTOP = "+";
+export const REMOVE_EXPENSE_LABEL_MOBILE = "Retirer";
+export const REMOVE_EXPENSE_LABEL_DESKTOP = "-";
 
 /**
  * Section de la liste des budgets en cours
