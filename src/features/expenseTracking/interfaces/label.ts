@@ -1,4 +1,4 @@
-export const EXPENSE_TRACKING_TITLE = "Suivi des dépenses";
+export const EXPENSES_TRACKING_TITLE = "Suivi des dépenses";
 
 /**
  * Section du formulaire d'ajout d'une dépense
@@ -17,4 +17,4 @@ export const REMOVE_EXPENSE_TEXT_DESKTOP = "-";
  * Section de la liste des budgets en cours
  */
 export const TOTAL_REMAINING_TITLE_SECTION = "Total restant : ";
-export const RESET_BUTTON_TEXT = "Réinitialiser";
+export const RESET_BUTTON_TEXT = "Reset";
