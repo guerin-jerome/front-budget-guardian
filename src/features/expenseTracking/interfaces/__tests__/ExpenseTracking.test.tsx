@@ -7,14 +7,14 @@ import {
   EXPENSE_BUDGET_IMPACTED_LABEL,
   EXPENSE_DATE_LABEL,
   EXPENSE_DETAILS_LABEL,
-  EXPENSE_TRACKING_TITLE,
+  EXPENSES_TRACKING_TITLE,
   TOTAL_REMAINING_TITLE_SECTION,
 } from "../label";
 
 test("<ExpenseTracking />", () => {
   render(<ExpenseTracking />);
 
-  const title = screen.getByRole("heading", { name: EXPENSE_TRACKING_TITLE });
+  const title = screen.getByRole("heading", { name: EXPENSES_TRACKING_TITLE });
 
   expect(title).toBeDefined();
 
