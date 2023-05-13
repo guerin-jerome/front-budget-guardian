@@ -8,10 +8,12 @@ import {
   EXPENSE_DATE_LABEL,
   EXPENSE_DETAILS_LABEL,
   EXPENSES_TRACKING_TITLE,
+  RESET_BUTTON_TEXT,
   TOTAL_REMAINING_TITLE_SECTION,
 } from "../label";
+import userEvent from "@testing-library/user-event";
 
-test("<ExpenseTracking />", () => {
+test("<ExpenseTracking />", async () => {
   render(<ExpenseTracking />);
 
   const title = screen.getByRole("heading", { name: EXPENSES_TRACKING_TITLE });
@@ -53,4 +55,8 @@ test("<ExpenseTracking />", () => {
   expect(budgetName).toBeDefined();
   expect(budgetType).toBeDefined();
   expect(budgetCurrentValue).toBeDefined();
+
+  const resetButton = screen.getByRole("button", { name: RESET_BUTTON_TEXT });
+
+  await userEvent.click(resetButton);
 });

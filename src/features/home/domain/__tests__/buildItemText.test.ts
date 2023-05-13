@@ -1,13 +1,13 @@
 import { expect, describe, test } from "vitest";
+import { buildItemText } from "../buildItemText";
+import { MENU_ITEM } from "../../hooks/useHome";
 import {
-  MENU_ITEM,
   MENU_ITEM_BUDGETS_MANAGEMENT_TEXT_DESKTOP,
   MENU_ITEM_BUDGETS_MANAGEMENT_TEXT_MOBILE,
   MENU_ITEM_EXPENSES_TRACKING_TEXT_DESKTOP,
   MENU_ITEM_EXPENSES_TRACKING_TEXT_MOBILE,
   MENU_ITEM_HISTORIQUE_TEXT,
-  buildItemText,
-} from "../buildItemText";
+} from "../../interfaces/label";
 
 describe("buildItemText()", () => {
   test("with expenses tracking item and desktop device", () => {
