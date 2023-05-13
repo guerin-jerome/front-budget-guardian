@@ -11,11 +11,11 @@ describe("<ExpenseTracking />", () => {
     const budgetName = screen.getByRole("heading", {
       name: /saved budget/i,
     });
-    const typeLabel = screen.getByText(BudgetTypeLibelle.SAVED);
+    const typeText = screen.getByText(BudgetTypeLibelle.SAVED);
     const indicatorValue = screen.getByText(/100€/i);
 
     expect(budgetName).toBeDefined();
-    expect(typeLabel).toBeDefined();
+    expect(typeText).toBeDefined();
     expect(indicatorValue).toBeDefined();
   });
 
@@ -25,11 +25,11 @@ describe("<ExpenseTracking />", () => {
     const budgetName = screen.getByRole("heading", {
       name: /fixe budget/i,
     });
-    const typeLabel = screen.getByText(BudgetTypeLibelle.FIXE);
+    const typeText = screen.getByText(BudgetTypeLibelle.FIXE);
     const indicatorValue = screen.getByText(/100€\/100€/i);
 
     expect(budgetName).toBeDefined();
-    expect(typeLabel).toBeDefined();
+    expect(typeText).toBeDefined();
     expect(indicatorValue).toBeDefined();
   });
 
@@ -39,11 +39,11 @@ describe("<ExpenseTracking />", () => {
     const budgetName = screen.getByRole("heading", {
       name: /variable budget/i,
     });
-    const typeLabel = screen.getByText(BudgetTypeLibelle.VARIABLE);
+    const typeText = screen.getByText(BudgetTypeLibelle.VARIABLE);
     const indicatorValue = screen.getByText(/5€\/100€/i);
 
     expect(budgetName).toBeDefined();
-    expect(typeLabel).toBeDefined();
+    expect(typeText).toBeDefined();
     expect(indicatorValue).toBeDefined();
   });
 });
