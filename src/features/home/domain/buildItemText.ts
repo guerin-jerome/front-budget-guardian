@@ -1,16 +1,11 @@
-import { Budget, BudgetType } from "@/entities/Budget";
-
-export enum MENU_ITEM {
-  EXPENSES_TRACKING,
-  BUDGETS_MANAGEMENT,
-  HISTORY,
-}
-
-export const MENU_ITEM_EXPENSES_TRACKING_TEXT_DESKTOP = "Suivi des dépenses";
-export const MENU_ITEM_EXPENSES_TRACKING_TEXT_MOBILE = "Suivi";
-export const MENU_ITEM_BUDGETS_MANAGEMENT_TEXT_DESKTOP = "Gestion des budgets";
-export const MENU_ITEM_BUDGETS_MANAGEMENT_TEXT_MOBILE = "Gestion";
-export const MENU_ITEM_HISTORIQUE_TEXT = "Historique";
+import { MENU_ITEM } from "../hooks/useHome";
+import {
+  MENU_ITEM_BUDGETS_MANAGEMENT_TEXT_DESKTOP,
+  MENU_ITEM_BUDGETS_MANAGEMENT_TEXT_MOBILE,
+  MENU_ITEM_EXPENSES_TRACKING_TEXT_DESKTOP,
+  MENU_ITEM_EXPENSES_TRACKING_TEXT_MOBILE,
+  MENU_ITEM_HISTORIQUE_TEXT,
+} from "../interfaces/label";
 
 /**
  * Construit le libellé à afficher pour l'item de navigation
