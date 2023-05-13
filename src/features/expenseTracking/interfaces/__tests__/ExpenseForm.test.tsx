@@ -8,6 +8,11 @@ import {
   EXPENSE_DETAILS_LABEL,
 } from "../label";
 import userEvent from "@testing-library/user-event";
+import {
+  SUBMIT_LABEL_BUTTONS_DESKTOP,
+  SUBMIT_LABEL_BUTTONS_MOBILE,
+} from "../../domain/buildSubmitLabelButtons";
+import { renderWithMobileContextProvider } from "@/common/utils/test";
 
 const formFillingScenario = async (
   details: string,
@@ -39,6 +44,37 @@ const formFillingScenario = async (
 };
 
 describe("<ExpenseForm />", () => {
+  test("icon button with desktop device", () => {
+    renderWithMobileContextProvider(<ExpenseForm />);
+
+    const addButon = screen.getByRole("button", {
+      name: SUBMIT_LABEL_BUTTONS_DESKTOP.add,
+    });
+    const removeButton = screen.getByRole("button", {
+      name: SUBMIT_LABEL_BUTTONS_DESKTOP.remove,
+    });
+
+    expect(addButon).toBeDefined();
+    expect(removeButton).toBeDefined();
+  });
+
+  test("text button with mobile device", async () => {
+    renderWithMobileContextProvider(<ExpenseForm />);
+
+    global.innerWidth = 500;
+    global.dispatchEvent(new Event("resize"));
+
+    const addButon = await screen.findByRole("button", {
+      name: SUBMIT_LABEL_BUTTONS_MOBILE.add,
+    });
+    const removeButton = screen.getByRole("button", {
+      name: SUBMIT_LABEL_BUTTONS_MOBILE.remove,
+    });
+
+    expect(addButon).toBeDefined();
+    expect(removeButton).toBeDefined();
+  });
+
   test("fill form and click remove button", async () => {
     render(<ExpenseForm />);
 
