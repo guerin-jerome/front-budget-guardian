@@ -7,6 +7,7 @@ button {
   border-radius: 5px;
   cursor: pointer;
   color: white;
+  padding: 0 12px;
 }
 
 button:hover {
@@ -15,6 +16,7 @@ button:hover {
 
 button.icon {
   width: 38px;
+  padding: 0;
 }
 
 button.success {
