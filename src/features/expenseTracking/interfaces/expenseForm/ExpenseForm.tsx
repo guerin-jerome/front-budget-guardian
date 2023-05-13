@@ -16,7 +16,7 @@ import { useExpenseForm } from "../../hooks/useExpenseForm";
 import "./style.css";
 
 export const ExpenseForm = () => {
-  const { budgetsImpactedOptions, SubmitTextButtons, isMobileDevice } =
+  const { budgetsImpactedOptions, submitTextButtons, isMobileDevice } =
     useExpenseForm();
 
   return (
@@ -64,7 +64,7 @@ export const ExpenseForm = () => {
             onClick={(e) => e.preventDefault()}
             appearence={ButtonAppearence.DANGER}
           >
-            {SubmitTextButtons.remove}
+            {submitTextButtons.remove}
           </Button>
           <Button
             type="submit"
@@ -72,7 +72,7 @@ export const ExpenseForm = () => {
             onClick={(e) => e.preventDefault()}
             appearence={ButtonAppearence.SUCCESS}
           >
-            {SubmitTextButtons.add}
+            {submitTextButtons.add}
           </Button>
         </div>
       </form>

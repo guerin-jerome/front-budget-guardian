@@ -1,15 +1,15 @@
-import { MOCK_BUDGETS } from "@/mocks/budget";
+import { buildBudgetsImpactedOptions } from "../domain/buildBudgetsImpactedOptions";
 import { MobileContext } from "@/context/MobileContext";
 import { useContext } from "react";
-import { buildSubmitTextButtons } from "../domain";
-import { buildBudgetsImpactedOptions } from "../domain";
+import { buildSubmitTextButtons } from "../domain/buildSubmitTextButtons";
+import { BudgetContext } from "@/context/BudgetsContext";
 
 export const useExpenseForm = () => {
-  const budgets = MOCK_BUDGETS;
+  const { budgets } = useContext(BudgetContext);
   const isMobileDevice = useContext(MobileContext);
 
   const budgetsImpactedOptions = buildBudgetsImpactedOptions(budgets);
-  const SubmitTextButtons = buildSubmitTextButtons(isMobileDevice);
+  const submitTextButtons = buildSubmitTextButtons(isMobileDevice);
 
-  return { budgetsImpactedOptions, SubmitTextButtons, isMobileDevice };
+  return { budgetsImpactedOptions, submitTextButtons, isMobileDevice };
 };

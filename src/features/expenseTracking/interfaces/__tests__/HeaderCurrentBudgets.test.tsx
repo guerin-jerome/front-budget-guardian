@@ -1,11 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { test, expect, describe } from "vitest";
 import { HeaderCurrentBudgets } from "../headerCurrentBudgets/HeaderCurrentBudgets";
 import { RESET_BUTTON_TEXT, TOTAL_REMAINING_TITLE_SECTION } from "../label";
+import { renderWithAllProviders } from "@/common/utils/test";
 
 describe("<HeaderCurrentBudgets />", () => {
   test("with saved budet", async () => {
-    render(<HeaderCurrentBudgets />);
+    renderWithAllProviders(<HeaderCurrentBudgets />);
 
     const totalRemainingTitle = screen.getByText(
       TOTAL_REMAINING_TITLE_SECTION,

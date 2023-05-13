@@ -1,8 +1,9 @@
-import { MOCK_BUDGETS } from "@/mocks/budget";
 import { calculateTotalRemaining } from "../domain";
+import { useContext } from "react";
+import { BudgetContext } from "@/context/BudgetsContext";
 
 export const useHeaderCurrentBudget = () => {
-  const budgets = MOCK_BUDGETS;
+  const { budgets } = useContext(BudgetContext);
 
   const totalRemaining = calculateTotalRemaining(budgets);
 

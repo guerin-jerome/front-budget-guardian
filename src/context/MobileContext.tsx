@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect, PropsWithChildren } from "react";
 
-export const MobileContext = createContext(false);
+export const MobileContext = createContext<boolean>(false);
 
 export const MobileContextProvider = ({ children }: PropsWithChildren) => {
   const [isMobileDevice, setIsMobileDevice] = useState(

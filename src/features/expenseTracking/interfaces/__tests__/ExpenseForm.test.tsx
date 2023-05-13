@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { describe, test, expect } from "vitest";
 import { ExpenseForm } from "../expenseForm/ExpenseForm";
 import {
@@ -8,7 +8,7 @@ import {
   EXPENSE_DETAILS_LABEL,
 } from "../label";
 import userEvent from "@testing-library/user-event";
-import { renderWithMobileContextProvider } from "@/common/utils/test";
+import { renderWithAllProviders } from "@/common/utils/test";
 import {
   SUBMIT_TEXT_BUTTONS_DESKTOP,
   SUBMIT_TEXT_BUTTONS_MOBILE,
@@ -45,7 +45,7 @@ const formFillingScenario = async (
 
 describe("<ExpenseForm />", () => {
   test("icon button with desktop device", () => {
-    renderWithMobileContextProvider(<ExpenseForm />);
+    renderWithAllProviders(<ExpenseForm />);
 
     const addButon = screen.getByRole("button", {
       name: SUBMIT_TEXT_BUTTONS_DESKTOP.add,
@@ -59,7 +59,7 @@ describe("<ExpenseForm />", () => {
   });
 
   test("text button with mobile device", async () => {
-    renderWithMobileContextProvider(<ExpenseForm />);
+    renderWithAllProviders(<ExpenseForm />);
 
     global.innerWidth = 500;
     global.dispatchEvent(new Event("resize"));
@@ -76,7 +76,7 @@ describe("<ExpenseForm />", () => {
   });
 
   test("fill form and click remove button", async () => {
-    render(<ExpenseForm />);
+    renderWithAllProviders(<ExpenseForm />);
 
     await formFillingScenario("details", "Loisirs", "18/01/1999", "100");
 
@@ -85,7 +85,7 @@ describe("<ExpenseForm />", () => {
   });
 
   test("fill form and click add button", async () => {
-    render(<ExpenseForm />);
+    renderWithAllProviders(<ExpenseForm />);
 
     await formFillingScenario("details", "Loisirs", "18/01/1999", "100");
 

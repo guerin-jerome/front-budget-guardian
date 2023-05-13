@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { test, expect } from "vitest";
 import { ExpenseTracking } from "../ExpenseTracking";
 import {
@@ -11,10 +11,11 @@ import {
   RESET_BUTTON_TEXT,
   TOTAL_REMAINING_TITLE_SECTION,
 } from "../label";
+import { renderWithAllProviders } from "@/common/utils/test";
 import userEvent from "@testing-library/user-event";
 
 test("<ExpenseTracking />", async () => {
-  render(<ExpenseTracking />);
+  renderWithAllProviders(<ExpenseTracking />);
 
   const title = screen.getByRole("heading", { name: EXPENSES_TRACKING_TITLE });
 
