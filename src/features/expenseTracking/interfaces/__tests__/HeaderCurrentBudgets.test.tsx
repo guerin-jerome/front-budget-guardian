@@ -14,7 +14,7 @@ describe("<HeaderCurrentBudgets />", () => {
         exact: false,
       }
     );
-    const totalRemaining = screen.getByText(/219,40 €/i);
+    const totalRemaining = screen.getByText(/615,60 €/i);
     const resetButton = screen.getByRole("button", { name: RESET_BUTTON_TEXT });
 
     expect(totalRemainingTitle).toBeDefined();

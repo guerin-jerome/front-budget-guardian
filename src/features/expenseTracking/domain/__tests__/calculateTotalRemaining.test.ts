@@ -14,7 +14,7 @@ describe("calculateTotalRemaining()", () => {
 
   test("with variable and saved budget", () => {
     expect(calculateTotalRemaining([VARIABLE_BUDGET, SAVED_BUDGET])).toEqual(
-      "95,00 €"
+      "5,00 €"
     );
   });
 
@@ -24,10 +24,10 @@ describe("calculateTotalRemaining()", () => {
       type: BudgetType.FIXE,
       name: "With negative remaining",
       base: 100,
-      spending: 150,
+      remaining: -100,
     };
     expect(calculateTotalRemaining([budget, { ...budget, id: 2 }])).toEqual(
-      "-100,00 €"
+      "-200,00 €"
     );
   });
 
@@ -37,9 +37,9 @@ describe("calculateTotalRemaining()", () => {
       type: BudgetType.FIXE,
       name: "With decimal remaining",
       base: 100,
-      spending: 90.5,
+      remaining: 90.5,
     };
-    expect(calculateTotalRemaining([budget])).toEqual("9,50 €");
+    expect(calculateTotalRemaining([budget])).toEqual("90,50 €");
   });
 
   test("with decimal remaining", () => {
@@ -48,8 +48,8 @@ describe("calculateTotalRemaining()", () => {
       type: BudgetType.FIXE,
       name: "With decimal remaining",
       base: 100,
-      spending: 90.589,
+      remaining: 90.589,
     };
-    expect(calculateTotalRemaining([budget])).toEqual("9,41 €");
+    expect(calculateTotalRemaining([budget])).toEqual("90,59 €");
   });
 });

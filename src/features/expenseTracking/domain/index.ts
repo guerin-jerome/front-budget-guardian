@@ -4,6 +4,7 @@ import { buildLibelleTypeBudget } from "./buildLibelleTypeBudget";
 import { buildSubmitTextButtons } from "./buildSubmitTextButtons";
 import { calculateBudgetConsumedPercentage } from "./calculateBudgetConsumedPercentage";
 import { calculateTotalRemaining } from "./calculateTotalRemaining";
+import { resetCurrentBudgets } from "./resetCurrentBudgets";
 
 export {
   buildBudgetsImpactedOptions,
@@ -12,4 +13,5 @@ export {
   buildSubmitTextButtons,
   calculateBudgetConsumedPercentage,
   calculateTotalRemaining,
+  resetCurrentBudgets,
 };

@@ -15,17 +15,17 @@ export type Budget = {
   type: BudgetType;
   name: string;
   base: number;
-  spending?: number;
+  remaining?: number;
 };
 
 export type BudgetVariable = Budget & {
   type: BudgetType.VARIABLE;
-  spending: number;
+  remaining: number;
 };
 
 export type BudgetFixe = Budget & {
   type: BudgetType.FIXE;
-  spending: number;
+  remaining: number;
 };
 
 export type BudgetSaved = Budget & {

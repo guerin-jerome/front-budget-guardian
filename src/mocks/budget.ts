@@ -10,7 +10,7 @@ export const MOCK_BUDGET: Budget = {
   id: 1,
   name: "Loisirs",
   type: BudgetType.VARIABLE,
-  spending: 5.6,
+  remaining: 5.6,
   base: 100,
 };
 
@@ -25,7 +25,7 @@ export const MOCK_BUDGET_FULL_CONSUMMED: Budget = {
   id: 3,
   name: "Loyer",
   type: BudgetType.FIXE,
-  spending: 560,
+  remaining: 560,
   base: 560,
 };
 
@@ -37,7 +37,7 @@ export const MOCK_BUDGETS: Budget[] = [
     id: 4,
     name: "Courses",
     type: BudgetType.VARIABLE,
-    spending: 50,
+    remaining: 50,
     base: 175,
   },
 ];
@@ -54,7 +54,7 @@ export const FIXE_BUDGET: BudgetFixe = {
   type: BudgetType.FIXE,
   name: "Fixe budget",
   base: 100,
-  spending: 100,
+  remaining: 100,
 };
 
 export const VARIABLE_BUDGET: BudgetVariable = {
@@ -62,5 +62,5 @@ export const VARIABLE_BUDGET: BudgetVariable = {
   type: BudgetType.VARIABLE,
   name: "Variable budget",
   base: 100,
-  spending: 5,
+  remaining: 5,
 };

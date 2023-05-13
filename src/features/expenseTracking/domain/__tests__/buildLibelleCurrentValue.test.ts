@@ -14,4 +14,9 @@ describe("buildLibelleCurrentValue()", () => {
   test("with variable budget", () => {
     expect(buildLibelleCurrentValue(VARIABLE_BUDGET)).toEqual("5€/100€");
   });
+
+  test("with decimal value", () => {
+    const budget = { ...VARIABLE_BUDGET, remaining: 5.14, base: 12.14 };
+    expect(buildLibelleCurrentValue(budget)).toEqual("5,14€/12,14€");
+  });
 });

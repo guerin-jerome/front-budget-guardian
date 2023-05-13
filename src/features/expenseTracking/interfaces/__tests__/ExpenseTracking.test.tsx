@@ -46,7 +46,7 @@ test("<ExpenseTracking />", async () => {
   const totalRemainingTitle = screen.getByText(TOTAL_REMAINING_TITLE_SECTION, {
     exact: false,
   });
-  const totalRemaining = screen.getByText(/219,40 €/i);
+  const totalRemaining = screen.getByText(/615,60 €/i);
   const budgetName = screen.getAllByText(/loisirs/i);
   const budgetType = screen.getAllByText(/dépense variable/i);
   const budgetCurrentValue = screen.getByText(/5.6€\/100€/i);
@@ -60,4 +60,8 @@ test("<ExpenseTracking />", async () => {
   const resetButton = screen.getByRole("button", { name: RESET_BUTTON_TEXT });
 
   await userEvent.click(resetButton);
+
+  const totalRemainingAfterReset = screen.getByText(/835,00 €/i);
+
+  expect(totalRemainingAfterReset).toBeDefined();
 });
