@@ -8,11 +8,11 @@ import {
   EXPENSE_DETAILS_LABEL,
 } from "../label";
 import userEvent from "@testing-library/user-event";
-import {
-  SUBMIT_LABEL_BUTTONS_DESKTOP,
-  SUBMIT_LABEL_BUTTONS_MOBILE,
-} from "../../domain/buildSubmitLabelButtons";
 import { renderWithMobileContextProvider } from "@/common/utils/test";
+import {
+  SUBMIT_TEXT_BUTTONS_DESKTOP,
+  SUBMIT_TEXT_BUTTONS_MOBILE,
+} from "../../domain/buildSubmitTextButtons";
 
 const formFillingScenario = async (
   details: string,
@@ -48,10 +48,10 @@ describe("<ExpenseForm />", () => {
     renderWithMobileContextProvider(<ExpenseForm />);
 
     const addButon = screen.getByRole("button", {
-      name: SUBMIT_LABEL_BUTTONS_DESKTOP.add,
+      name: SUBMIT_TEXT_BUTTONS_DESKTOP.add,
     });
     const removeButton = screen.getByRole("button", {
-      name: SUBMIT_LABEL_BUTTONS_DESKTOP.remove,
+      name: SUBMIT_TEXT_BUTTONS_DESKTOP.remove,
     });
 
     expect(addButon).toBeDefined();
@@ -65,10 +65,10 @@ describe("<ExpenseForm />", () => {
     global.dispatchEvent(new Event("resize"));
 
     const addButon = await screen.findByRole("button", {
-      name: SUBMIT_LABEL_BUTTONS_MOBILE.add,
+      name: SUBMIT_TEXT_BUTTONS_MOBILE.add,
     });
     const removeButton = screen.getByRole("button", {
-      name: SUBMIT_LABEL_BUTTONS_MOBILE.remove,
+      name: SUBMIT_TEXT_BUTTONS_MOBILE.remove,
     });
 
     expect(addButon).toBeDefined();

@@ -35,7 +35,7 @@ test("<ExpenseTracking />", () => {
   expect(budgetImpactedLabel).toBeDefined();
   expect(dateLabel).toBeDefined();
   expect(amountLabel).toBeDefined();
-  expect(actionsButton.length).toEqual(2);
+  expect(actionsButton.length).toEqual(3);
 
   /**
    * Visuel des dépenses
