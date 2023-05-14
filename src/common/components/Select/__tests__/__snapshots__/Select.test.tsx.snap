@@ -2,7 +2,9 @@
 
 exports[`<Select /> > matchs snapshot 1`] = `
 <div>
-  <select>
+  <select
+    class=""
+  >
     <option
       disabled=""
       value="initial_value"

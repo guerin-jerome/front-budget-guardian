@@ -12,11 +12,25 @@ import {
   EXPENSE_DATE_LABEL,
   EXPENSE_DETAILS_LABEL,
 } from "../label";
+import { getDateFormattedYYYYMMDD } from "@/common/utils/date";
 import { useExpenseForm } from "../../hooks/useExpenseForm";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { object, string } from "yup";
 import "./style.css";
 
-type ExpenseFormInputs = {
+const expenseFormValidator = object<ExpenseFormInputs>({
+  details: string(),
+  date: string().required(),
+  budgetImpacted: string()
+    .nonNullable()
+    .test({
+      test: (value?: string) => !!value && value !== "initial_value",
+    }),
+  amount: string().required(),
+}).required();
+
+export type ExpenseFormInputs = {
   details: string;
   date: string;
   budgetImpacted: string;
@@ -24,12 +38,24 @@ type ExpenseFormInputs = {
 };
 
 export const ExpenseForm = () => {
-  const { register, handleSubmit } = useForm<ExpenseFormInputs>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ExpenseFormInputs>({
+    defaultValues: {
+      budgetImpacted: "initial_value",
+      date: getDateFormattedYYYYMMDD(new Date()),
+    },
+    resolver: yupResolver(expenseFormValidator),
+  });
 
-  const { budgetsImpactedOptions, submitTextButtons, isMobileDevice } =
-    useExpenseForm();
-
-  const onSubmit = (values: ExpenseFormInputs) => console.debug(values);
+  const {
+    budgetsImpactedOptions,
+    submitTextButtons,
+    isMobileDevice,
+    handleSubmitExpenseForm,
+  } = useExpenseForm();
 
   const detailsInput = register("details");
   const budgetImpactedInput = register("budgetImpacted");
@@ -38,7 +64,10 @@ export const ExpenseForm = () => {
 
   return (
     <Card className="expense-card">
-      <form className="expense-form" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="expense-form"
+        onSubmit={handleSubmit(handleSubmitExpenseForm)}
+      >
         <div className="form-group">
           <Label htmlFor="details">{EXPENSE_DETAILS_LABEL}</Label>
           <Textbox placeholder="Ex: Courses" register={detailsInput} />
@@ -50,8 +79,8 @@ export const ExpenseForm = () => {
           <Select
             options={budgetsImpactedOptions}
             register={budgetImpactedInput}
-            defaultValue="initial_value"
             defaultText="Sélectionnez un budget"
+            hasError={!!errors.budgetImpacted}
           />
         </div>
         <div className="form-group">
@@ -60,6 +89,7 @@ export const ExpenseForm = () => {
             testId="date-input-expense"
             type="date"
             register={dateInput}
+            hasError={!!errors.date}
           />
         </div>
         <div className="form-group">
@@ -69,6 +99,7 @@ export const ExpenseForm = () => {
             type="number"
             step={0.01}
             register={amountInput}
+            hasError={!!errors.amount}
           />
         </div>
         <div className="form-actions">

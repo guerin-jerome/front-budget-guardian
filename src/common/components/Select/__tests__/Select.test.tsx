@@ -4,13 +4,14 @@ import { Select } from "../Select";
 
 describe("<Select />", () => {
   it("matchs snapshot", () => {
-    const { container } = render(<Select options={[]} />);
+    const { container } = render(<Select hasError={false} options={[]} />);
     expect(container).toMatchSnapshot();
   });
 
   it("renders well", async () => {
     render(
       <Select
+        hasError={true}
         defaultValue="1"
         defaultText="Example"
         options={[{ value: "1", text: "optionTest", disabled: true }]}

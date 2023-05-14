@@ -13,6 +13,7 @@ import {
 } from "../label";
 import { renderWithAllProviders } from "@/common/utils/test";
 import userEvent from "@testing-library/user-event";
+import { formFillingScenario } from "./ExpenseForm.test";
 
 test("<ExpenseTracking />", async () => {
   renderWithAllProviders(<ExpenseTracking />);
@@ -64,4 +65,6 @@ test("<ExpenseTracking />", async () => {
   const totalRemainingAfterReset = screen.getByText(/835,00 €/i);
 
   expect(totalRemainingAfterReset).toBeDefined();
+
+  await formFillingScenario("details", "Loisirs", "18/01/1999", "100");
 });

@@ -1,20 +1,14 @@
 import { screen } from "@testing-library/react";
 import { describe, test, expect } from "vitest";
 import { ExpenseForm } from "../expenseForm/ExpenseForm";
-import {
-  EXPENSE_AMOUNT_LABEL,
-  EXPENSE_BUDGET_IMPACTED_LABEL,
-  EXPENSE_DATE_LABEL,
-  EXPENSE_DETAILS_LABEL,
-} from "../label";
-import userEvent from "@testing-library/user-event";
 import { renderWithAllProviders } from "@/common/utils/test";
 import {
   SUBMIT_TEXT_BUTTONS_DESKTOP,
   SUBMIT_TEXT_BUTTONS_MOBILE,
 } from "../../domain/buildSubmitTextButtons";
+import userEvent from "@testing-library/user-event";
 
-const formFillingScenario = async (
+export const formFillingScenario = async (
   details: string,
   budgetImpacted: string,
   date: string,

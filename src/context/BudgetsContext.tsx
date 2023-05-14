@@ -8,21 +8,21 @@ import {
 import { Budget } from "@/entities/Budget";
 import { MOCK_BUDGETS } from "@/mocks/budget";
 
-export type BudgetContextType = {
+export type BudgetsContextType = {
   budgets: Budget[];
   setBudgets?: Dispatch<SetStateAction<Budget[]>>;
 };
 
-export const BudgetContext = createContext<BudgetContextType>({
+export const BudgetsContext = createContext<BudgetsContextType>({
   budgets: [],
 });
 
-export const BudgetContextProvider = ({ children }: PropsWithChildren) => {
+export const BudgetsContextProvider = ({ children }: PropsWithChildren) => {
   const [budgets, setBudgets] = useState<Budget[]>(MOCK_BUDGETS);
 
   return (
-    <BudgetContext.Provider value={{ budgets, setBudgets }}>
+    <BudgetsContext.Provider value={{ budgets, setBudgets }}>
       {children}
-    </BudgetContext.Provider>
+    </BudgetsContext.Provider>
   );
 };

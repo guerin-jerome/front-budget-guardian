@@ -1,9 +1,9 @@
 import { calculateTotalRemaining, resetCurrentBudgets } from "../domain";
 import { useContext } from "react";
-import { BudgetContext } from "@/context/BudgetsContext";
+import { BudgetsContext } from "@/context/BudgetsContext";
 
 export const useHeaderCurrentBudget = () => {
-  const { budgets, setBudgets } = useContext(BudgetContext);
+  const { budgets, setBudgets } = useContext(BudgetsContext);
 
   const totalRemaining = calculateTotalRemaining(budgets);
 

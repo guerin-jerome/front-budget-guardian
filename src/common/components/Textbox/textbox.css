@@ -8,3 +8,7 @@ input {
   border-radius: 2px;
   border: 1px solid #ccc;
 }
+
+input.error {
+  border: 1.5px solid #b33939;
+}

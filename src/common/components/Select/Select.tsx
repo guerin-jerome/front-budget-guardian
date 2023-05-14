@@ -1,8 +1,10 @@
 import { SelectProps } from "./select.type";
+import classNames from "classnames";
 import "./select.css";
 
 export const Select = ({
   options,
+  hasError,
   register,
   defaultValue,
   defaultText = "Sélectionnez une valeur",
@@ -14,7 +16,11 @@ export const Select = ({
   };
 
   return (
-    <select {...register} defaultValue={defaultValue}>
+    <select
+      {...register}
+      defaultValue={defaultValue}
+      className={classNames({ error: hasError })}
+    >
       {[placeholderSelect, ...options].map(({ value, text, disabled }) => (
         <option key={value} value={value} disabled={disabled}>
           {text}

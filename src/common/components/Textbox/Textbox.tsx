@@ -1,4 +1,5 @@
 import { TextboxProps } from "./textbox.type";
+import classNames from "classnames";
 import "./textbox.css";
 
 export const Textbox = ({
@@ -7,8 +8,11 @@ export const Textbox = ({
   type = "text",
   register,
   testId,
+  hasError,
 }: TextboxProps) => (
   <input
+    className={classNames({ error: hasError })}
+    aria-invalid={hasError}
     data-testid={testId}
     type={type}
     step={step}

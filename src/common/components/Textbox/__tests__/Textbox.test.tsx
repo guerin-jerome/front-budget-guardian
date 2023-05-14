@@ -10,7 +10,9 @@ describe("<Textbox />", () => {
   });
 
   it("renders well - type number", async () => {
-    render(<Textbox type="number" step={2} placeholder="Ex: 100" />);
+    render(
+      <Textbox type="number" step={2} hasError={true} placeholder="Ex: 100" />
+    );
     const textbox = screen.getByRole("spinbutton");
     await userEvent.type(textbox, "100");
     expect(textbox).toBeDefined();

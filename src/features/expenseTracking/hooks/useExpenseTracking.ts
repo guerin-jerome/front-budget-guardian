@@ -1,8 +1,8 @@
-import { BudgetContext } from "@/context/BudgetsContext";
+import { BudgetsContext } from "@/context/BudgetsContext";
 import { useContext } from "react";
 
 export const useExpenseTracking = () => {
-  const { budgets } = useContext(BudgetContext);
+  const { budgets } = useContext(BudgetsContext);
 
   return { budgets };
 };

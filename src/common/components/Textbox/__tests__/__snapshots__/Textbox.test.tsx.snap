@@ -3,6 +3,7 @@
 exports[`<Textbox /> > matchs snapshot 1`] = `
 <div>
   <input
+    class=""
     type="text"
   />
 </div>

@@ -6,4 +6,5 @@ export type TextboxProps = Partial<{
   placeholder: string;
   step: number;
   testId: string;
+  hasError: boolean;
 }>;

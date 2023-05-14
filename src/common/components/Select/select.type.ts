@@ -8,6 +8,7 @@ export type SelectOption = {
 
 export type SelectProps = {
   options: SelectOption[];
+  hasError: boolean;
   register?: UseFormRegisterReturn;
   defaultValue?: string;
   defaultText?: string;

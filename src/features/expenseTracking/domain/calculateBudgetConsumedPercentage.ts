@@ -12,6 +12,6 @@ export const calculateBudgetConsumedPercentage = ({
   base,
   remaining,
 }: Budget): string =>
-  type !== BudgetType.SAVED && !!remaining
-    ? `${calculatePercentageRounded(remaining, base).toString()}%`
+  type !== BudgetType.SAVED
+    ? `${calculatePercentageRounded(remaining!!, base).toString()}%`
     : "100%";

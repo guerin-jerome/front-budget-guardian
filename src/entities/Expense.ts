@@ -8,8 +8,8 @@ export type BudgetImpacted = {
 
 export type Expense = {
   id: number;
-  details: string;
-  date: string;
   budget: BudgetImpacted;
   amount: number;
+  details?: string;
+  date?: string;
 };
