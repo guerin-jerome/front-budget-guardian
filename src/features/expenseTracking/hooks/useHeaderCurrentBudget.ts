@@ -7,7 +7,7 @@ export const useHeaderCurrentBudget = () => {
 
   const totalRemaining = calculateTotalRemaining(budgets);
 
-  const handleClickResetButton = () => setBudgets(resetCurrentBudgets);
+  const handleClickResetButton = () => setBudgets!!(resetCurrentBudgets);
 
   return { totalRemaining, handleClickResetButton };
 };

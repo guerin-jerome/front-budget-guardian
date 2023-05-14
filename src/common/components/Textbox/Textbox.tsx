@@ -2,19 +2,17 @@ import { TextboxProps } from "./textbox.type";
 import "./textbox.css";
 
 export const Textbox = ({
-  id,
-  name,
-  onChange,
   step,
   placeholder,
   type = "text",
+  register,
+  testId,
 }: TextboxProps) => (
   <input
-    onChange={onChange}
-    id={id}
-    name={name}
+    data-testid={testId}
     type={type}
     step={step}
     placeholder={placeholder}
+    {...register}
   />
 );

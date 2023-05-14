@@ -11,5 +11,5 @@ export type Expense = {
   details: string;
   date: string;
   budget: BudgetImpacted;
-  value: number;
+  amount: number;
 };

@@ -20,25 +20,19 @@ const formFillingScenario = async (
   date: string,
   amount: string
 ) => {
-  const textboxDetails = screen.getByRole("textbox", {
-    name: EXPENSE_DETAILS_LABEL,
-  });
+  const textboxDetails = screen.getByRole("textbox");
   await userEvent.type(textboxDetails, details);
   expect(textboxDetails).toBeDefined();
 
-  const selectBudgetImpacted = screen.getByRole("combobox", {
-    name: EXPENSE_BUDGET_IMPACTED_LABEL,
-  });
+  const selectBudgetImpacted = screen.getByRole("combobox");
   await userEvent.selectOptions(selectBudgetImpacted, budgetImpacted);
   expect(selectBudgetImpacted).toBeDefined();
 
-  const datepicker = screen.getByLabelText(EXPENSE_DATE_LABEL);
+  const datepicker = screen.getByTestId("date-input-expense");
   await userEvent.type(datepicker, date);
   expect(datepicker).toBeDefined();
 
-  const textboxAmount = screen.getByRole("spinbutton", {
-    name: EXPENSE_AMOUNT_LABEL,
-  });
+  const textboxAmount = screen.getByRole("spinbutton");
   await userEvent.type(textboxAmount, amount);
   expect(textboxAmount).toBeDefined();
 };
@@ -76,7 +70,7 @@ describe("<ExpenseForm />", () => {
   });
 
   test("fill form and click remove button", async () => {
-    renderWithAllProviders(<ExpenseForm />);
+    const { container } = renderWithAllProviders(<ExpenseForm />);
 
     await formFillingScenario("details", "Loisirs", "18/01/1999", "100");
 

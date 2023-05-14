@@ -8,12 +8,14 @@ import {
 import { Budget } from "@/entities/Budget";
 import { MOCK_BUDGETS } from "@/mocks/budget";
 
-type BudgetContextType = Partial<{
+export type BudgetContextType = {
   budgets: Budget[];
-  setBudgets: Dispatch<SetStateAction<Budget[]>>;
-}>;
+  setBudgets?: Dispatch<SetStateAction<Budget[]>>;
+};
 
-export const BudgetContext = createContext<BudgetContextType>({});
+export const BudgetContext = createContext<BudgetContextType>({
+  budgets: [],
+});
 
 export const BudgetContextProvider = ({ children }: PropsWithChildren) => {
   const [budgets, setBudgets] = useState<Budget[]>(MOCK_BUDGETS);
