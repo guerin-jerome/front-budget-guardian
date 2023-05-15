@@ -20,20 +20,20 @@ describe("calculateTotalRemaining()", () => {
 
   test("with negative remaining", () => {
     const budget: Budget = {
-      id: 1,
+      id: "1",
       type: BudgetType.FIXE,
       name: "With negative remaining",
       base: 100,
       remaining: -100,
     };
-    expect(calculateTotalRemaining([budget, { ...budget, id: 2 }])).toEqual(
+    expect(calculateTotalRemaining([budget, { ...budget, id: "2" }])).toEqual(
       "-200,00 €"
     );
   });
 
   test("with decimal remaining", () => {
     const budget: Budget = {
-      id: 1,
+      id: "1",
       type: BudgetType.FIXE,
       name: "With decimal remaining",
       base: 100,
@@ -44,7 +44,7 @@ describe("calculateTotalRemaining()", () => {
 
   test("with decimal remaining", () => {
     const budget: Budget = {
-      id: 1,
+      id: "1",
       type: BudgetType.FIXE,
       name: "With decimal remaining",
       base: 100,

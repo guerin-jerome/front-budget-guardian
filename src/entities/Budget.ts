@@ -11,7 +11,7 @@ export enum BudgetTypeLibelle {
 }
 
 export type Budget = {
-  id: number;
+  id: string;
   type: BudgetType;
   name: string;
   base: number;

@@ -1,4 +1,4 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import { test, expect } from "vitest";
 import { ExpenseTracking } from "../ExpenseTracking";
 import {
@@ -13,7 +13,38 @@ import {
 } from "../label";
 import { renderWithAllProviders } from "@/common/utils/test";
 import userEvent from "@testing-library/user-event";
-import { formFillingScenario } from "./ExpenseForm.test";
+
+export const formFillingScenario = async (
+  details?: string,
+  budgetImpacted?: string,
+  date?: string,
+  amount?: string
+) => {
+  if (details) {
+    const textboxDetails = screen.getByRole("textbox");
+    await userEvent.type(textboxDetails, details);
+    expect(textboxDetails).toBeDefined();
+  }
+
+  if (budgetImpacted) {
+    const selectBudgetImpacted = screen.getByRole("combobox");
+    await userEvent.selectOptions(selectBudgetImpacted, budgetImpacted);
+    expect(selectBudgetImpacted).toBeDefined();
+  }
+
+  if (date) {
+    const datepicker = screen.getByTestId("date-input-expense");
+    await userEvent.clear(datepicker);
+    await userEvent.type(datepicker, date);
+    expect(datepicker).toBeDefined();
+  }
+
+  if (amount) {
+    const textboxAmount = screen.getByRole("spinbutton");
+    await userEvent.type(textboxAmount, amount);
+    expect(textboxAmount).toBeDefined();
+  }
+};
 
 test("<ExpenseTracking />", async () => {
   renderWithAllProviders(<ExpenseTracking />);
@@ -47,6 +78,7 @@ test("<ExpenseTracking />", async () => {
   const totalRemainingTitle = screen.getByText(TOTAL_REMAINING_TITLE_SECTION, {
     exact: false,
   });
+  // Total avant reset
   const totalRemaining = screen.getByText(/615,60 €/i);
   const budgetName = screen.getAllByText(/loisirs/i);
   const budgetType = screen.getAllByText(/dépense variable/i);
@@ -62,9 +94,50 @@ test("<ExpenseTracking />", async () => {
 
   await userEvent.click(resetButton);
 
+  // Total après reset
   const totalRemainingAfterReset = screen.getByText(/835,00 €/i);
-
   expect(totalRemainingAfterReset).toBeDefined();
 
-  await formFillingScenario("details", "Loisirs", "18/01/1999", "100");
+  // Budget loisir avant ajout de la dépense
+  const budgetLoisirRemaining = screen.getByText(/100€\/100€/i);
+  expect(budgetLoisirRemaining).toBeDefined();
+
+  const addExpenseButton = screen.getByRole("button", { name: "-" });
+  expect(addExpenseButton).toBeDefined();
+
+  await formFillingScenario("details", "Loisirs", "1999-01-18", "50");
+  await waitFor(() => userEvent.click(addExpenseButton));
+
+  // Budget loisir après ajout de la dépense
+  const budgetLoisirRemainingUpdated = await screen.findByText(/50€\/100€/i);
+  expect(budgetLoisirRemainingUpdated).toBeDefined();
+
+  // Épargne avant retrait
+  const savedRemaining = screen.getByText(/200€/i);
+  expect(savedRemaining).toBeDefined();
+
+  await formFillingScenario(
+    "details",
+    "Placement financier",
+    "1999-01-18",
+    "125"
+  );
+  await waitFor(() => userEvent.click(addExpenseButton));
+
+  // Épargne après retrait
+  const savedRemainingUpdated = await screen.findByText(/75€/i);
+  expect(savedRemainingUpdated).toBeDefined();
+
+  const selectBudgetImpacted = screen.getByRole("combobox");
+  const datepicker = screen.getByTestId("date-input-expense");
+  const textboxAmount = screen.getByRole("spinbutton");
+
+  await userEvent.selectOptions(selectBudgetImpacted, "Loisirs");
+  await userEvent.clear(datepicker);
+  await userEvent.clear(textboxAmount);
+  await userEvent.click(addExpenseButton);
+
+  // Budget loisir avant ajout de la dépense
+  const budgetLoisirNotUpdated = screen.getByText(/50€\/100€/i);
+  expect(budgetLoisirNotUpdated).toBeDefined();
 });

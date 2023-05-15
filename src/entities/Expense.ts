@@ -1,15 +1,15 @@
 import { BudgetType } from "./Budget";
 
 export type BudgetImpacted = {
-  id: number;
+  id: string;
   type: BudgetType;
   name: string;
 };
 
 export type Expense = {
-  id: number;
+  id: string;
   budget: BudgetImpacted;
   amount: number;
+  date: string;
   details?: string;
-  date?: string;
 };

@@ -18,7 +18,7 @@ describe("calculateBudgetConsumedPercentage()", () => {
 
   test("with negative balance", () => {
     const budget: Budget = {
-      id: 1,
+      id: "1",
       type: BudgetType.FIXE,
       name: "With negative balance",
       base: -100,
@@ -29,7 +29,7 @@ describe("calculateBudgetConsumedPercentage()", () => {
 
   test("with over balance", () => {
     const budget: Budget = {
-      id: 1,
+      id: "1",
       type: BudgetType.FIXE,
       name: "With over balance",
       base: 100,

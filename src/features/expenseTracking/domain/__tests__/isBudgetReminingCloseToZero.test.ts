@@ -2,10 +2,9 @@ import { expect, describe, test } from "vitest";
 import { BudgetType } from "@/entities/Budget";
 import { isBudgetReminingCloseToZero } from "../isBudgetReminingCloseToZero";
 
-isBudgetReminingCloseToZero;
 describe("isBudgetReminingCloseToZero()", () => {
   const budgetTest = {
-    id: 1,
+    id: "1",
     type: BudgetType.FIXE,
     name: "test",
     base: 100,
