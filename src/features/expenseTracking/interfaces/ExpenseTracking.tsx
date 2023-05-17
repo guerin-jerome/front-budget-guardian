@@ -10,6 +10,7 @@ const { Title } = Typography;
 
 export const ExpenseTracking = () => {
   const { budgets } = useExpenseTracking();
+
   return (
     <div className="container">
       <Title level={2}>{EXPENSES_TRACKING_TITLE}</Title>

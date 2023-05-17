@@ -18,22 +18,22 @@ describe("calculateBudgetConsumedPercentage()", () => {
 
   test("with negative balance", () => {
     const budget: Budget = {
-      id: 1,
+      id: "1",
       type: BudgetType.FIXE,
       name: "With negative balance",
       base: -100,
-      spending: 5,
+      remaining: 5,
     };
     expect(calculateBudgetConsumedPercentage(budget)).toEqual("0%");
   });
 
   test("with over balance", () => {
     const budget: Budget = {
-      id: 1,
+      id: "1",
       type: BudgetType.FIXE,
       name: "With over balance",
       base: 100,
-      spending: 150,
+      remaining: 150,
     };
     expect(calculateBudgetConsumedPercentage(budget)).toEqual("100%");
   });

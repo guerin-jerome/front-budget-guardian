@@ -1,10 +1,7 @@
 import { screen } from "@testing-library/react";
 import { test, expect } from "vitest";
 import userEvent from "@testing-library/user-event";
-import {
-  renderWithMobileAndRouterProvider,
-  renderWithMobileContextProvider,
-} from "@/common/utils/test";
+import { renderWithAllProviders } from "@/common/utils/test";
 import {
   MENU_ITEM_EXPENSES_TRACKING_TEXT_MOBILE,
   MENU_ITEM_BUDGETS_MANAGEMENT_TEXT_DESKTOP,
@@ -15,7 +12,7 @@ import {
 import { Home } from "../Home";
 
 test("<Home />", async () => {
-  renderWithMobileAndRouterProvider(<Home />);
+  renderWithAllProviders(<Home />);
 
   expect(window.location.pathname).toEqual("/expenses-tracking");
 
