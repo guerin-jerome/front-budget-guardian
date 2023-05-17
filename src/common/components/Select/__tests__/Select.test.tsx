@@ -3,26 +3,26 @@ import { describe, it, expect, vi } from "vitest";
 import { Select } from "../Select";
 
 describe("<Select />", () => {
-  const onChange = vi.fn();
   it("matchs snapshot", () => {
-    const { container } = render(
-      <Select id="test" name="test" options={[]} onChange={onChange} />
-    );
+    const { container } = render(<Select hasError={false} options={[]} />);
     expect(container).toMatchSnapshot();
   });
 
   it("renders well", async () => {
     render(
       <Select
-        id="test"
-        name="test"
+        hasError={true}
+        defaultValue="1"
+        defaultText="Example"
         options={[{ value: "1", text: "optionTest", disabled: true }]}
-        onChange={onChange}
       />
     );
-
     const select = screen.getByRole("combobox");
+    const placeholerOption = screen.getByRole("option", { name: "Example" });
+    const optionTest = screen.getByRole("option", { name: "optionTest" });
 
     expect(select).toBeDefined();
+    expect(placeholerOption).toBeDefined();
+    expect(optionTest).toBeDefined();
   });
 });

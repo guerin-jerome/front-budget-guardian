@@ -6,7 +6,7 @@ import "./style.css";
 const { Title } = Typography;
 
 export const HeaderCurrentBudgets = () => {
-  const { totalRemaining } = useHeaderCurrentBudget();
+  const { totalRemaining, handleClickResetButton } = useHeaderCurrentBudget();
 
   return (
     <div className="header-current-budgets">
@@ -14,7 +14,10 @@ export const HeaderCurrentBudgets = () => {
         {TOTAL_REMAINING_TITLE_SECTION}
         {totalRemaining}
       </Title>
-      <Button onClick={() => {}} appearence={ButtonAppearence.SECONDARY}>
+      <Button
+        onClick={handleClickResetButton}
+        appearence={ButtonAppearence.SECONDARY}
+      >
         {RESET_BUTTON_TEXT}
       </Button>
     </div>

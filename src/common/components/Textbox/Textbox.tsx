@@ -1,20 +1,22 @@
 import { TextboxProps } from "./textbox.type";
+import classNames from "classnames";
 import "./textbox.css";
 
 export const Textbox = ({
-  id,
-  name,
-  onChange,
   step,
   placeholder,
   type = "text",
+  register,
+  testId,
+  hasError,
 }: TextboxProps) => (
   <input
-    onChange={onChange}
-    id={id}
-    name={name}
+    className={classNames({ error: hasError })}
+    aria-invalid={hasError}
+    data-testid={testId}
     type={type}
     step={step}
     placeholder={placeholder}
+    {...register}
   />
 );

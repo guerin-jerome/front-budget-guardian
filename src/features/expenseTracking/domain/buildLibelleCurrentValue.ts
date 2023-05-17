@@ -1,3 +1,4 @@
+import { replacePointByComma } from "@/common/utils/string";
 import { Budget, BudgetType } from "@/entities/Budget";
 
 /**
@@ -8,6 +9,10 @@ import { Budget, BudgetType } from "@/entities/Budget";
 export const buildLibelleCurrentValue = ({
   type,
   base,
-  spending,
+  remaining,
 }: Budget): string =>
-  type !== BudgetType.SAVED ? `${spending}€/${base}€` : `${base}€`;
+  replacePointByComma(
+    type !== BudgetType.SAVED
+      ? `${remaining?.toFixed(2)}€ / ${base.toFixed(2)}€`
+      : `${base.toFixed(2)}€`
+  )!!;

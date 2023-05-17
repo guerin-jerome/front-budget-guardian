@@ -1,7 +1,8 @@
-import { MOCK_BUDGETS } from "@/mocks/budget";
+import { BudgetsContext } from "@/context/BudgetsContext";
+import { useContext } from "react";
 
 export const useExpenseTracking = () => {
-  const budgets = MOCK_BUDGETS;
+  const { budgets } = useContext(BudgetsContext);
 
   return { budgets };
 };

@@ -7,7 +7,7 @@ const { Title, Muted, Bold } = Typography;
 
 export const CurrentBudget = (budget: Budget) => {
   const { name } = budget;
-  const { libelleCurrentValue, libelleType, percentConsummed } =
+  const { libelleCurrentValue, libelleType, percentConsummed, isCloseToZero } =
     useCurrentBudget(budget);
 
   return (
@@ -17,7 +17,7 @@ export const CurrentBudget = (budget: Budget) => {
         <Muted>{libelleType}</Muted>
         <Bold>{libelleCurrentValue}</Bold>
       </div>
-      <Progress width={percentConsummed} />
+      <Progress width={percentConsummed} hasError={isCloseToZero} />
     </Card>
   );
 };

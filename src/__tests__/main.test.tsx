@@ -1,15 +1,15 @@
 import { Router } from "@/routes/Router";
 import { screen } from "@testing-library/react";
 import { test, expect } from "vitest";
+import { renderWithMobileAndBudgetProviders } from "@/common/utils/test";
 import userEvent from "@testing-library/user-event";
-import { renderWithMobileContextProvider } from "@/common/utils/test";
 import {
   MENU_ITEM_BUDGETS_MANAGEMENT_TEXT_DESKTOP,
   MENU_ITEM_HISTORIQUE_TEXT,
 } from "@/features/home/interfaces/label";
 
 test("Application integration tests", async () => {
-  renderWithMobileContextProvider(<Router />);
+  renderWithMobileAndBudgetProviders(<Router />);
   /**
    * Location : Product page
    */
