@@ -1,25 +1,9 @@
 import { expect, describe, test } from "vitest";
 import { buildExpenseFromInputs } from "../buildExpenseFromInputs";
 import { BudgetType } from "@/entities/Budget";
+import { MOCK_BUDGETS } from "@/mocks/budget";
 
 describe("buildExpenseFromInputs()", () => {
-  const budgets = [
-    {
-      id: "1",
-      type: BudgetType.FIXE,
-      name: "Test1",
-      base: 200,
-      remaining: 200,
-    },
-    {
-      id: "2",
-      type: BudgetType.VARIABLE,
-      name: "Test2",
-      base: 350,
-      remaining: 90,
-    },
-  ];
-
   test("cas nominal", () => {
     const inputs = {
       details: "details",
@@ -29,12 +13,12 @@ describe("buildExpenseFromInputs()", () => {
     };
     const { budget, amount, details, date } = buildExpenseFromInputs(
       inputs,
-      budgets
+      MOCK_BUDGETS
     );
     expect(budget).toEqual({
       id: "1",
-      type: BudgetType.FIXE,
-      name: "Test1",
+      name: "Loisirs",
+      type: BudgetType.VARIABLE,
     });
     expect(amount).toEqual(100);
     expect(details).toEqual("details");
@@ -50,12 +34,12 @@ describe("buildExpenseFromInputs()", () => {
     };
     const { budget, amount, details, date } = buildExpenseFromInputs(
       inputs,
-      budgets
+      MOCK_BUDGETS
     );
     expect(budget).toEqual({
       id: "1",
-      type: BudgetType.FIXE,
-      name: "Test1",
+      name: "Loisirs",
+      type: BudgetType.VARIABLE,
     });
     expect(amount).toEqual(100);
     expect(details).toBeUndefined();

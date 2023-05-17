@@ -18,10 +18,10 @@ export const removeExpenseToBudget = (
           remaining:
             budget.type === BudgetType.SAVED
               ? budget.remaining
-              : budget.remaining!! - expense.amount,
+              : Number((budget.remaining!! - expense.amount).toFixed(2)),
           base:
             budget.type === BudgetType.SAVED
-              ? budget.base - expense.amount
+              ? Number((budget.base - expense.amount).toFixed(2))
               : budget.base,
         }
       : budget

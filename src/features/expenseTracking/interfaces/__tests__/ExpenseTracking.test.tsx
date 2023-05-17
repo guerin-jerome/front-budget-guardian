@@ -79,10 +79,10 @@ test("<ExpenseTracking />", async () => {
     exact: false,
   });
   // Total avant reset
-  const totalRemaining = screen.getByText(/615,60 €/i);
+  const totalRemaining = await screen.findByText(/615,60 €/i);
   const budgetName = screen.getAllByText(/loisirs/i);
   const budgetType = screen.getAllByText(/dépense variable/i);
-  const budgetCurrentValue = screen.getByText(/5.6€\/100€/i);
+  const budgetCurrentValue = screen.getByText("5,60€ / 100,00€");
 
   expect(totalRemainingTitle).toBeDefined();
   expect(totalRemaining).toBeDefined();
@@ -95,11 +95,12 @@ test("<ExpenseTracking />", async () => {
   await userEvent.click(resetButton);
 
   // Total après reset
-  const totalRemainingAfterReset = screen.getByText(/835,00 €/i);
+  const totalRemainingAfterReset = await screen.findByText(/835,00 €/i);
   expect(totalRemainingAfterReset).toBeDefined();
 
   // Budget loisir avant ajout de la dépense
-  const budgetLoisirRemaining = screen.getByText(/100€\/100€/i);
+  screen.logTestingPlaygroundURL();
+  const budgetLoisirRemaining = screen.getByText(/100,00€ \/ 100,00€/i);
   expect(budgetLoisirRemaining).toBeDefined();
 
   const addExpenseButton = screen.getByRole("button", { name: "-" });
@@ -109,11 +110,13 @@ test("<ExpenseTracking />", async () => {
   await waitFor(() => userEvent.click(addExpenseButton));
 
   // Budget loisir après ajout de la dépense
-  const budgetLoisirRemainingUpdated = await screen.findByText(/50€\/100€/i);
+  const budgetLoisirRemainingUpdated = await screen.findByText(
+    "50,00€ / 100,00€"
+  );
   expect(budgetLoisirRemainingUpdated).toBeDefined();
 
   // Épargne avant retrait
-  const savedRemaining = screen.getByText(/200€/i);
+  const savedRemaining = screen.getByText("200,00€");
   expect(savedRemaining).toBeDefined();
 
   await formFillingScenario(
@@ -125,7 +128,7 @@ test("<ExpenseTracking />", async () => {
   await waitFor(() => userEvent.click(addExpenseButton));
 
   // Épargne après retrait
-  const savedRemainingUpdated = await screen.findByText(/75€/i);
+  const savedRemainingUpdated = await screen.findByText(/75,00€/i);
   expect(savedRemainingUpdated).toBeDefined();
 
   const selectBudgetImpacted = screen.getByRole("combobox");
@@ -138,6 +141,6 @@ test("<ExpenseTracking />", async () => {
   await userEvent.click(addExpenseButton);
 
   // Budget loisir avant ajout de la dépense
-  const budgetLoisirNotUpdated = screen.getByText(/50€\/100€/i);
+  const budgetLoisirNotUpdated = screen.getByText("50,00€ / 100,00€");
   expect(budgetLoisirNotUpdated).toBeDefined();
 });

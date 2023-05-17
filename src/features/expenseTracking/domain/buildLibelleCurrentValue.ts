@@ -12,5 +12,7 @@ export const buildLibelleCurrentValue = ({
   remaining,
 }: Budget): string =>
   replacePointByComma(
-    type !== BudgetType.SAVED ? `${remaining}€/${base}€` : `${base}€`
+    type !== BudgetType.SAVED
+      ? `${remaining?.toFixed(2)}€ / ${base.toFixed(2)}€`
+      : `${base.toFixed(2)}€`
   )!!;

@@ -13,7 +13,7 @@ describe("<ExpenseTracking />", () => {
       name: /saved budget/i,
     });
     const typeText = screen.getByText(BudgetTypeLibelle.SAVED);
-    const indicatorValue = screen.getByText(/100€/i);
+    const indicatorValue = screen.getByText(/100,00€/i);
 
     expect(budgetName).toBeDefined();
     expect(typeText).toBeDefined();
@@ -27,7 +27,7 @@ describe("<ExpenseTracking />", () => {
       name: /fixe budget/i,
     });
     const typeText = screen.getByText(BudgetTypeLibelle.FIXE);
-    const indicatorValue = screen.getByText(/100€\/100€/i);
+    const indicatorValue = screen.getByText(/100,00€ \/ 100,00€/i);
 
     expect(budgetName).toBeDefined();
     expect(typeText).toBeDefined();
@@ -41,7 +41,7 @@ describe("<ExpenseTracking />", () => {
       name: /variable budget/i,
     });
     const typeText = screen.getByText(BudgetTypeLibelle.VARIABLE);
-    const indicatorValue = screen.getByText(/5€\/100€/i);
+    const indicatorValue = screen.getByText(/5,00€ \/ 100,00€/i);
 
     expect(budgetName).toBeDefined();
     expect(typeText).toBeDefined();

@@ -1,28 +1,15 @@
 import { expect, describe, test } from "vitest";
+import { MOCK_EXPENSE, MOCK_EXPENSE_COURSES } from "@/mocks/expense";
 import { addExpense } from "../addExpense";
-import { Expense } from "@/entities/Expense";
-import { BudgetType } from "@/entities/Budget";
 
 describe("addExpense()", () => {
-  const expense: Expense = {
-    id: "1",
-    budget: {
-      id: "1",
-      type: BudgetType.FIXE,
-      name: "Test1",
-    },
-    amount: 100,
-    date: "1999-01-18",
-    details: "test1",
-  };
   test("with empty expenses", () => {
-    expect(addExpense(expense, [])).toEqual([expense]);
+    expect(addExpense(MOCK_EXPENSE, [])).toEqual([MOCK_EXPENSE]);
   });
 
   test("with filled expenses", () => {
-    expect(addExpense({ ...expense, id: "2" }, [expense])).toEqual([
-      expense,
-      { ...expense, id: "2" },
-    ]);
+    expect(
+      addExpense({ ...MOCK_EXPENSE, id: "2" }, [MOCK_EXPENSE_COURSES])
+    ).toEqual([MOCK_EXPENSE_COURSES, { ...MOCK_EXPENSE, id: "2" }]);
   });
 });

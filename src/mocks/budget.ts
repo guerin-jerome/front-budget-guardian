@@ -30,9 +30,9 @@ export const MOCK_BUDGET_FULL_CONSUMMED: Budget = {
 };
 
 export const MOCK_BUDGETS: Budget[] = [
-  { ...MOCK_BUDGET },
-  { ...MOCK_BUDGET_SAVED },
-  { ...MOCK_BUDGET_FULL_CONSUMMED },
+  MOCK_BUDGET,
+  MOCK_BUDGET_SAVED,
+  MOCK_BUDGET_FULL_CONSUMMED,
   {
     id: "4",
     name: "Courses",
