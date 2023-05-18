@@ -4,7 +4,6 @@ import { ExpenseTracking } from "../ExpenseTracking";
 import {
   EXPENSE_DETAILS_LABEL,
   EXPENSES_TRACKING_TITLE,
-  RESET_BUTTON_TEXT,
   TOTAL_REMAINING_TITLE_SECTION,
 } from "../label";
 import { renderWithAllProviders } from "@/common/utils/test";

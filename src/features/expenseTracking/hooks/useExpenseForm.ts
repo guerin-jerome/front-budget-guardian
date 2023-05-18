@@ -24,7 +24,6 @@ export const useExpenseForm = (
   const { setExpenses } = useContext(ExpensesContext);
 
   const budgetsImpactedOptions = buildBudgetsImpactedOptions(budgets);
-  const submitTextButtons = buildSubmitTextButtons(isMobileDevice);
 
   const handleSubmitExpenseForm: SubmitHandler<ExpenseFormInputs> = (
     inputs: ExpenseFormInputs
