@@ -16,7 +16,7 @@ button:hover {
 
 button.icon {
   width: 38px;
-  padding: 0;
+  padding: 10px;
 }
 
 button.success {

@@ -1,12 +1,28 @@
+import { Dispatch, SetStateAction } from "react";
 import { Button, ButtonAppearence, Typography } from "@/common/components";
-import { RESET_BUTTON_TEXT, TOTAL_REMAINING_TITLE_SECTION } from "../label";
+import { TOTAL_REMAINING_TITLE_SECTION } from "../label";
 import { useHeaderCurrentBudget } from "../../hooks/useHeaderCurrentBudget";
+import { DisplayedForm } from "../../hooks/useExpenseTracking";
 import "./style.css";
+import { ResetIcon } from "./ResetIcon";
 
 const { Title } = Typography;
 
-export const HeaderCurrentBudgets = () => {
-  const { totalRemaining, handleClickResetButton } = useHeaderCurrentBudget();
+type HeaderCurrentBudgetsProps = {
+  isFormDisplay: boolean;
+  setDisplayedForm: Dispatch<SetStateAction<DisplayedForm>>;
+};
+
+export const HeaderCurrentBudgets = ({
+  isFormDisplay,
+  setDisplayedForm,
+}: HeaderCurrentBudgetsProps) => {
+  const {
+    totalRemaining,
+    handleClickResetButton,
+    handleClickAddButton,
+    handleClickRemoveButton,
+  } = useHeaderCurrentBudget(setDisplayedForm);
 
   return (
     <div className="header-current-budgets">
@@ -14,12 +30,31 @@ export const HeaderCurrentBudgets = () => {
         {TOTAL_REMAINING_TITLE_SECTION}
         {totalRemaining}
       </Title>
-      <Button
-        onClick={handleClickResetButton}
-        appearence={ButtonAppearence.SECONDARY}
-      >
-        {RESET_BUTTON_TEXT}
-      </Button>
+      {!isFormDisplay && (
+        <div className="header-current-budgets-actions">
+          <Button
+            onClick={handleClickAddButton}
+            isIconMode
+            appearence={ButtonAppearence.SUCCESS}
+          >
+            +
+          </Button>
+          <Button
+            onClick={handleClickRemoveButton}
+            isIconMode
+            appearence={ButtonAppearence.DANGER}
+          >
+            -
+          </Button>
+          <Button
+            onClick={handleClickResetButton}
+            isIconMode
+            appearence={ButtonAppearence.SECONDARY}
+          >
+            <ResetIcon />
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

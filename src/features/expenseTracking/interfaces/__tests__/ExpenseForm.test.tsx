@@ -1,41 +1,41 @@
 import { screen } from "@testing-library/react";
-import { describe, test, expect } from "vitest";
+import { describe, test, expect, vi } from "vitest";
 import { ExpenseForm } from "../expenseForm/ExpenseForm";
 import { renderWithAllProviders } from "@/common/utils/test";
+import { FormType } from "../../hooks/useExpenseTracking";
 import {
-  SUBMIT_TEXT_BUTTONS_DESKTOP,
-  SUBMIT_TEXT_BUTTONS_MOBILE,
-} from "../../domain/buildSubmitTextButtons";
+  EXPENSE_AMOUNT_LABEL,
+  EXPENSE_BUDGET_IMPACTED_LABEL,
+  EXPENSE_DETAILS_LABEL,
+} from "../label";
 
-describe("<ExpenseForm />", () => {
-  test("icon button with desktop device", () => {
-    renderWithAllProviders(<ExpenseForm />);
+test("<ExpenseForm />", async () => {
+  const setDisplayedForm = vi.fn();
 
-    const addButon = screen.getByRole("button", {
-      name: SUBMIT_TEXT_BUTTONS_DESKTOP.add,
-    });
-    const removeButton = screen.getByRole("button", {
-      name: SUBMIT_TEXT_BUTTONS_DESKTOP.remove,
-    });
+  renderWithAllProviders(
+    <ExpenseForm formType={FormType.ADD} setDisplayedForm={setDisplayedForm} />
+  );
 
-    expect(addButon).toBeDefined();
-    expect(removeButton).toBeDefined();
-  });
+  const detailsLabel = screen.getByText(EXPENSE_DETAILS_LABEL);
+  const detailsInput = screen.getByRole("textbox");
+  expect(detailsLabel).toBeDefined();
+  expect(detailsInput).toBeDefined();
 
-  test("text button with mobile device", async () => {
-    renderWithAllProviders(<ExpenseForm />);
+  const budgetImpactedLabel = screen.getByText(EXPENSE_BUDGET_IMPACTED_LABEL);
+  const budgetImpactedCombobox = screen.getByRole("combobox");
+  expect(budgetImpactedLabel).toBeDefined();
+  expect(budgetImpactedCombobox).toBeDefined();
 
-    global.innerWidth = 500;
-    global.dispatchEvent(new Event("resize"));
+  const dateLabel = screen.getByText(EXPENSE_DETAILS_LABEL);
+  const dateInput = screen.getByTestId("date-input-expense");
+  expect(dateLabel).toBeDefined();
+  expect(dateInput).toBeDefined();
 
-    const addButon = await screen.findByRole("button", {
-      name: SUBMIT_TEXT_BUTTONS_MOBILE.add,
-    });
-    const removeButton = screen.getByRole("button", {
-      name: SUBMIT_TEXT_BUTTONS_MOBILE.remove,
-    });
+  const amountLabel = screen.getByText(EXPENSE_AMOUNT_LABEL);
+  const amountInput = screen.getByRole("spinbutton");
+  expect(amountLabel).toBeDefined();
+  expect(amountInput).toBeDefined();
 
-    expect(addButon).toBeDefined();
-    expect(removeButton).toBeDefined();
-  });
+  const buttons = screen.getAllByRole("button");
+  expect(buttons.length).toEqual(2);
 });
