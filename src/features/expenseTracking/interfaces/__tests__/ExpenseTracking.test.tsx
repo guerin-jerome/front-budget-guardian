@@ -1,14 +1,9 @@
-import { screen, waitFor } from "@testing-library/react";
-import { test, expect } from "vitest";
+import { screen } from "@testing-library/react";
+import { test, describe, expect } from "vitest";
 import { ExpenseTracking } from "../ExpenseTracking";
 import {
-  ADD_EXPENSE_TITLE_SECTION,
-  EXPENSE_AMOUNT_LABEL,
-  EXPENSE_BUDGET_IMPACTED_LABEL,
-  EXPENSE_DATE_LABEL,
   EXPENSE_DETAILS_LABEL,
   EXPENSES_TRACKING_TITLE,
-  RESET_BUTTON_TEXT,
   TOTAL_REMAINING_TITLE_SECTION,
 } from "../label";
 import { renderWithAllProviders } from "@/common/utils/test";
@@ -46,101 +41,177 @@ export const formFillingScenario = async (
   }
 };
 
-test("<ExpenseTracking />", async () => {
-  renderWithAllProviders(<ExpenseTracking />);
+describe("<ExpenseTracking />", () => {
+  test("vue initiale", () => {
+    renderWithAllProviders(<ExpenseTracking />);
 
-  const title = screen.getByRole("heading", { name: EXPENSES_TRACKING_TITLE });
+    const title = screen.getByRole("heading", {
+      name: EXPENSES_TRACKING_TITLE,
+    });
+    const totalRemainingTitle = screen.getByText(
+      TOTAL_REMAINING_TITLE_SECTION,
+      {
+        exact: false,
+      }
+    );
+    const totalRemaining = screen.findByText(/615,60 €/i);
+    const buttons = screen.getAllByRole("button");
 
-  expect(title).toBeDefined();
-
-  /**
-   * Formulaire d'ajout d'une dépense
-   */
-  const addExpenseTitle = screen.getByRole("heading", {
-    name: ADD_EXPENSE_TITLE_SECTION,
+    expect(title).toBeDefined();
+    expect(totalRemainingTitle).toBeDefined();
+    expect(totalRemaining).toBeDefined();
+    expect(buttons.length).toEqual(3);
   });
-  const detailsLabel = screen.getByText(EXPENSE_DETAILS_LABEL);
-  const budgetImpactedLabel = screen.getByText(EXPENSE_BUDGET_IMPACTED_LABEL);
-  const dateLabel = screen.getByText(EXPENSE_DATE_LABEL);
-  const amountLabel = screen.getByText(EXPENSE_AMOUNT_LABEL);
-  const actionsButton = screen.getAllByRole("button");
 
-  expect(addExpenseTitle).toBeDefined();
-  expect(detailsLabel).toBeDefined();
-  expect(budgetImpactedLabel).toBeDefined();
-  expect(dateLabel).toBeDefined();
-  expect(amountLabel).toBeDefined();
-  expect(actionsButton.length).toEqual(3);
+  test("reset budgets", async () => {
+    renderWithAllProviders(<ExpenseTracking />);
 
-  /**
-   * Visuel des dépenses
-   */
-  const totalRemainingTitle = screen.getByText(TOTAL_REMAINING_TITLE_SECTION, {
-    exact: false,
+    const totalRemaining = await screen.findByText(/615,60 €/i);
+    const budgetName = screen.getAllByText(/loisirs/i);
+    const budgetType = screen.getAllByText(/dépense variable/i);
+    const budgetCurrentValue = screen.getByText("5,60€ / 100,00€");
+    const buttons = screen.getAllByRole("button");
+    const resetButton = buttons[2];
+
+    expect(totalRemaining).toBeDefined();
+    expect(budgetName).toBeDefined();
+    expect(budgetType).toBeDefined();
+    expect(budgetCurrentValue).toBeDefined();
+    expect(resetButton).toBeDefined();
+
+    await userEvent.click(resetButton);
+
+    const totalRemainingAfterReset = await screen.findByText(/835,00 €/i);
+    const budgetLoisirRemaining = screen.getByText(/100,00€ \/ 100,00€/i);
+
+    expect(totalRemainingAfterReset).toBeDefined();
+    expect(budgetLoisirRemaining).toBeDefined();
   });
-  // Total avant reset
-  const totalRemaining = await screen.findByText(/615,60 €/i);
-  const budgetName = screen.getAllByText(/loisirs/i);
-  const budgetType = screen.getAllByText(/dépense variable/i);
-  const budgetCurrentValue = screen.getByText("5,60€ / 100,00€");
 
-  expect(totalRemainingTitle).toBeDefined();
-  expect(totalRemaining).toBeDefined();
-  expect(budgetName).toBeDefined();
-  expect(budgetType).toBeDefined();
-  expect(budgetCurrentValue).toBeDefined();
+  test("formulaire budget - manque d'infos and cancel", async () => {
+    renderWithAllProviders(<ExpenseTracking />);
 
-  const resetButton = screen.getByRole("button", { name: RESET_BUTTON_TEXT });
+    const totalRemaining = await screen.findByText(/615,60 €/i);
+    const actionsButtons = screen.getAllByRole("button");
+    const addButton = actionsButtons[0];
 
-  await userEvent.click(resetButton);
+    expect(totalRemaining).toBeDefined();
+    expect(addButton).toBeDefined();
 
-  // Total après reset
-  const totalRemainingAfterReset = await screen.findByText(/835,00 €/i);
-  expect(totalRemainingAfterReset).toBeDefined();
+    await userEvent.click(addButton);
 
-  // Budget loisir avant ajout de la dépense
-  screen.logTestingPlaygroundURL();
-  const budgetLoisirRemaining = screen.getByText(/100,00€ \/ 100,00€/i);
-  expect(budgetLoisirRemaining).toBeDefined();
+    const buttons = screen.getAllByRole("button");
+    const detailsLabel = screen.getByText(EXPENSE_DETAILS_LABEL);
+    expect(buttons.length).toEqual(2);
+    expect(detailsLabel).toBeDefined();
+    const validateButton = buttons[0];
+    const cancelButton = buttons[1];
 
-  const addExpenseButton = screen.getByRole("button", { name: "-" });
-  expect(addExpenseButton).toBeDefined();
+    await userEvent.click(validateButton);
 
-  await formFillingScenario("details", "Loisirs", "1999-01-18", "50");
-  await waitFor(() => userEvent.click(addExpenseButton));
+    const totalRemainingNotUpdated = await screen.findByText(/615,60 €/i);
+    expect(totalRemainingNotUpdated).toBeDefined();
 
-  // Budget loisir après ajout de la dépense
-  const budgetLoisirRemainingUpdated = await screen.findByText(
-    "50,00€ / 100,00€"
-  );
-  expect(budgetLoisirRemainingUpdated).toBeDefined();
+    await userEvent.click(cancelButton);
 
-  // Épargne avant retrait
-  const savedRemaining = screen.getByText("200,00€");
-  expect(savedRemaining).toBeDefined();
+    const actionsButtonsReappear = screen.getAllByRole("button");
+    expect(actionsButtonsReappear.length).toEqual(3);
+    expect(screen.queryByText(EXPENSE_DETAILS_LABEL)).toBeNull();
+  });
 
-  await formFillingScenario(
-    "details",
-    "Placement financier",
-    "1999-01-18",
-    "125"
-  );
-  await waitFor(() => userEvent.click(addExpenseButton));
+  test("formulaire budget - ajout dépense dans budget", async () => {
+    renderWithAllProviders(<ExpenseTracking />);
 
-  // Épargne après retrait
-  const savedRemainingUpdated = await screen.findByText(/75,00€/i);
-  expect(savedRemainingUpdated).toBeDefined();
+    const actionsButtons = screen.getAllByRole("button");
+    const removeButton = actionsButtons[1];
+    const budgetCurrentValue = screen.getByText("5,60€ / 100,00€");
+    expect(removeButton).toBeDefined();
+    expect(budgetCurrentValue).toBeDefined();
 
-  const selectBudgetImpacted = screen.getByRole("combobox");
-  const datepicker = screen.getByTestId("date-input-expense");
-  const textboxAmount = screen.getByRole("spinbutton");
+    await userEvent.click(removeButton);
 
-  await userEvent.selectOptions(selectBudgetImpacted, "Loisirs");
-  await userEvent.clear(datepicker);
-  await userEvent.clear(textboxAmount);
-  await userEvent.click(addExpenseButton);
+    await formFillingScenario("details", "1", "1999-01-18", "5");
 
-  // Budget loisir avant ajout de la dépense
-  const budgetLoisirNotUpdated = screen.getByText("50,00€ / 100,00€");
-  expect(budgetLoisirNotUpdated).toBeDefined();
+    const buttons = screen.getAllByRole("button");
+    const [validateButton] = buttons;
+    expect(validateButton).toBeDefined();
+
+    await userEvent.click(validateButton);
+
+    const budgetCurrentValueUpdated = await screen.findByText(
+      "0,60€ / 100,00€"
+    );
+    expect(budgetCurrentValueUpdated).toBeDefined();
+  });
+
+  test("formulaire budget - ajout dépense dans épargne", async () => {
+    renderWithAllProviders(<ExpenseTracking />);
+
+    const actionsButtons = screen.getAllByRole("button");
+    const removeButton = actionsButtons[1];
+    const savedCurrentValue = screen.getByText("200,00€");
+    expect(removeButton).toBeDefined();
+    expect(savedCurrentValue).toBeDefined();
+
+    await userEvent.click(removeButton);
+
+    await formFillingScenario("details", "2", "1999-01-18", "20");
+
+    const buttons = screen.getAllByRole("button");
+    const [validateButton] = buttons;
+    expect(validateButton).toBeDefined();
+
+    await userEvent.click(validateButton);
+
+    const savedCurrentValueUpdated = await screen.findByText("180,00€");
+    expect(savedCurrentValueUpdated).toBeDefined();
+  });
+
+  test("formulaire budget - rajout argent dans budget", async () => {
+    renderWithAllProviders(<ExpenseTracking />);
+
+    const actionsButtons = screen.getAllByRole("button");
+    const addButton = actionsButtons[0];
+    const budgetCurrentValue = screen.getByText("5,60€ / 100,00€");
+    expect(addButton).toBeDefined();
+    expect(budgetCurrentValue).toBeDefined();
+
+    await userEvent.click(addButton);
+
+    await formFillingScenario("details", "1", "1999-01-18", "5");
+
+    const buttons = screen.getAllByRole("button");
+    const [validateButton] = buttons;
+    expect(validateButton).toBeDefined();
+
+    await userEvent.click(validateButton);
+
+    const budgetCurrentValueUpdated = await screen.findByText(
+      "10,60€ / 100,00€"
+    );
+    expect(budgetCurrentValueUpdated).toBeDefined();
+  });
+
+  test("formulaire budget - rajout argent dans épargne", async () => {
+    renderWithAllProviders(<ExpenseTracking />);
+
+    const actionsButtons = screen.getAllByRole("button");
+    const addButton = actionsButtons[0];
+    const savedCurrentValue = screen.getByText("200,00€");
+    expect(addButton).toBeDefined();
+    expect(savedCurrentValue).toBeDefined();
+
+    await userEvent.click(addButton);
+
+    await formFillingScenario("details", "2", "1999-01-18", "20");
+
+    const buttons = screen.getAllByRole("button");
+    const [validateButton] = buttons;
+    expect(validateButton).toBeDefined();
+
+    await userEvent.click(validateButton);
+
+    const savedCurrentValueUpdated = await screen.findByText("220,00€");
+    expect(savedCurrentValueUpdated).toBeDefined();
+  });
 });

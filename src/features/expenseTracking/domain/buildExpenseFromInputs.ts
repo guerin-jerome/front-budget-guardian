@@ -2,6 +2,7 @@ import { Budget } from "@/entities/Budget";
 import { ExpenseFormInputs } from "../interfaces/expenseForm/ExpenseForm";
 import { Expense } from "@/entities/Expense";
 import { v4 as uuid } from "uuid";
+import { FormType } from "../hooks/useExpenseTracking";
 
 /**
  * Construit une dépense depuis le formulaire de création de dépense
@@ -10,7 +11,8 @@ import { v4 as uuid } from "uuid";
  */
 export const buildExpenseFromInputs = (
   inputs: ExpenseFormInputs,
-  budgets: Budget[]
+  budgets: Budget[],
+  formType: FormType
 ): Expense => {
   const { details, date, budgetImpacted: budgetImpactedId, amount } = inputs;
   const budgetImpacted = budgets.find(
@@ -24,7 +26,7 @@ export const buildExpenseFromInputs = (
       type,
       name,
     },
-    amount: parseFloat(amount),
+    amount: parseFloat(amount) * (formType == FormType.ADD ? 1 : -1),
     details: !!details ? details : undefined,
     date,
   };

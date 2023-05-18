@@ -17,6 +17,9 @@ import { useExpenseForm } from "../../hooks/useExpenseForm";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { object, string } from "yup";
+import { Dispatch, SetStateAction } from "react";
+import { DisplayedForm, FormType } from "../../hooks/useExpenseTracking";
+import { CancelIcon, ValidateIcon } from "./ExpenseFormIcons";
 import "./style.css";
 
 const expenseFormValidator = object<ExpenseFormInputs>({
@@ -24,9 +27,10 @@ const expenseFormValidator = object<ExpenseFormInputs>({
   date: string().required(),
   budgetImpacted: string()
     .nonNullable()
-    .test({
-      test: (value?: string) => !!value && value !== "initial_value",
-    }),
+    .test(
+      "should select a budget",
+      (value?: string) => !!value && value !== "initial_value"
+    ),
   amount: string().required(),
 }).required();
 
@@ -37,7 +41,15 @@ export type ExpenseFormInputs = {
   amount: string;
 };
 
-export const ExpenseForm = () => {
+type ExpenseFormProps = {
+  formType?: FormType;
+  setDisplayedForm: Dispatch<SetStateAction<DisplayedForm>>;
+};
+
+export const ExpenseForm = ({
+  formType,
+  setDisplayedForm,
+}: ExpenseFormProps) => {
   const {
     register,
     handleSubmit,
@@ -50,12 +62,8 @@ export const ExpenseForm = () => {
     resolver: yupResolver(expenseFormValidator),
   });
 
-  const {
-    budgetsImpactedOptions,
-    submitTextButtons,
-    isMobileDevice,
-    handleSubmitExpenseForm,
-  } = useExpenseForm();
+  const { budgetsImpactedOptions, handleSubmitExpenseForm, handleCancel } =
+    useExpenseForm(setDisplayedForm, formType!!);
 
   const detailsInput = register("details");
   const budgetImpactedInput = register("budgetImpacted");
@@ -105,17 +113,17 @@ export const ExpenseForm = () => {
         <div className="form-actions">
           <Button
             type="submit"
-            isIconMode={!isMobileDevice}
-            appearence={ButtonAppearence.DANGER}
+            isIconMode={true}
+            appearence={ButtonAppearence.PRIMARY}
           >
-            {submitTextButtons.remove}
+            <ValidateIcon />
           </Button>
           <Button
-            type="submit"
-            isIconMode={!isMobileDevice}
-            appearence={ButtonAppearence.SUCCESS}
+            onClick={handleCancel}
+            isIconMode={true}
+            appearence={ButtonAppearence.SECONDARY}
           >
-            {submitTextButtons.add}
+            <CancelIcon />
           </Button>
         </div>
       </form>

@@ -13,6 +13,18 @@ export const MOCK_EXPENSE: Expense = {
   details: "Details loisirs",
 };
 
+export const MOCK_REMOVE_EXPENSE: Expense = {
+  id: "1",
+  budget: {
+    id: "1",
+    type: BudgetType.VARIABLE,
+    name: "Loisirs",
+  },
+  amount: -10,
+  date: "1999-01-18",
+  details: "Details loisirs",
+};
+
 export const MOCK_EXPENSE_COURSES: Expense = {
   id: "2",
   budget: {
@@ -33,6 +45,18 @@ export const MOCK_EXPENSE_SAVED: Expense = {
     name: "Placement financier",
   },
   amount: 100,
+  date: "2023-02-05",
+  details: "Besoin personnel",
+};
+
+export const MOCK_REMOVE_EXPENSE_SAVED: Expense = {
+  id: "3",
+  budget: {
+    id: "2",
+    type: BudgetType.SAVED,
+    name: "Placement financier",
+  },
+  amount: -100,
   date: "2023-02-05",
   details: "Besoin personnel",
 };
