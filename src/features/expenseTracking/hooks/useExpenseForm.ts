@@ -1,37 +1,41 @@
-import { MobileContext } from "@/context/MobileContext";
-import { useContext } from "react";
+import { Dispatch, SetStateAction, useContext } from "react";
 import {
-  buildSubmitTextButtons,
   buildBudgetsImpactedOptions,
   buildExpenseFromInputs,
   addExpense,
-  removeExpenseToBudget,
+  updateBudget,
 } from "../domain";
 import { BudgetsContext } from "@/context/BudgetsContext";
 import { ExpenseFormInputs } from "../interfaces/expenseForm/ExpenseForm";
 import { ExpensesContext } from "@/context/ExpensesContext";
 import { Expense } from "@/entities/Expense";
+import {
+  DISPLAYED_FORM_DEFAULT,
+  DisplayedForm,
+  FormType,
+} from "./useExpenseTracking";
 
-export const useExpenseForm = () => {
+export const useExpenseForm = (
+  setDisplayedForm: Dispatch<SetStateAction<DisplayedForm>>,
+  formType: FormType
+) => {
   const { budgets, setBudgets } = useContext(BudgetsContext);
   const { setExpenses } = useContext(ExpensesContext);
-  const isMobileDevice = useContext(MobileContext);
 
   const budgetsImpactedOptions = buildBudgetsImpactedOptions(budgets);
-  const submitTextButtons = buildSubmitTextButtons(isMobileDevice);
 
   const handleSubmitExpenseForm = (inputs: ExpenseFormInputs) => {
-    const expense: Expense = buildExpenseFromInputs(inputs, budgets);
+    const expense: Expense = buildExpenseFromInputs(inputs, budgets, formType);
     setExpenses!!((currentExpenses) => addExpense(expense, currentExpenses));
-    setBudgets!!((currentBudgets) =>
-      removeExpenseToBudget(expense, currentBudgets)
-    );
+    setBudgets!!((currentBudgets) => updateBudget(expense, currentBudgets));
+    setDisplayedForm(DISPLAYED_FORM_DEFAULT);
   };
+
+  const handleCancel = () => setDisplayedForm(DISPLAYED_FORM_DEFAULT);
 
   return {
     budgetsImpactedOptions,
-    submitTextButtons,
-    isMobileDevice,
     handleSubmitExpenseForm,
+    handleCancel,
   };
 };
