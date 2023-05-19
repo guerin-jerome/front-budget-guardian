@@ -27,7 +27,7 @@ export const buildExpenseFromInputs = (
       name,
     },
     amount: parseFloat(amount) * (formType == FormType.ADD ? 1 : -1),
-    details: !!details ? details : undefined,
+    details: details ? details : undefined,
     date,
   };
 };

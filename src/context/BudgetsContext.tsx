@@ -4,6 +4,7 @@ import {
   Dispatch,
   SetStateAction,
   PropsWithChildren,
+  useMemo,
 } from "react";
 import { Budget } from "@/entities/Budget";
 import { MOCK_BUDGETS } from "@/mocks/budget";
@@ -20,8 +21,13 @@ export const BudgetsContext = createContext<BudgetsContextType>({
 export const BudgetsContextProvider = ({ children }: PropsWithChildren) => {
   const [budgets, setBudgets] = useState<Budget[]>(MOCK_BUDGETS);
 
+  const contextValues = useMemo(
+    () => ({ budgets, setBudgets }),
+    [budgets, setBudgets]
+  );
+
   return (
-    <BudgetsContext.Provider value={{ budgets, setBudgets }}>
+    <BudgetsContext.Provider value={contextValues}>
       {children}
     </BudgetsContext.Provider>
   );
