@@ -1,12 +1,5 @@
 import { expect, describe, test } from "vitest";
-import {
-  FIXE_BUDGET,
-  MOCK_BUDGET,
-  MOCK_BUDGETS,
-  MOCK_BUDGET_SAVED,
-  SAVED_BUDGET,
-  VARIABLE_BUDGET,
-} from "@/mocks/budget";
+import { MOCK_BUDGET, MOCK_BUDGET_SAVED } from "@/mocks/budget";
 import { updateBudget } from "../updateBudget";
 import {
   MOCK_EXPENSE,

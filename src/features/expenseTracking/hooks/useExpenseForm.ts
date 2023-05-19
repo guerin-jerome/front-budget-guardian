@@ -14,6 +14,7 @@ import {
   DisplayedForm,
   FormType,
 } from "./useExpenseTracking";
+import { SubmitHandler } from "react-hook-form";
 
 export const useExpenseForm = (
   setDisplayedForm: Dispatch<SetStateAction<DisplayedForm>>,
@@ -24,7 +25,9 @@ export const useExpenseForm = (
 
   const budgetsImpactedOptions = buildBudgetsImpactedOptions(budgets);
 
-  const handleSubmitExpenseForm = (inputs: ExpenseFormInputs) => {
+  const handleSubmitExpenseForm: SubmitHandler<ExpenseFormInputs> = (
+    inputs: ExpenseFormInputs
+  ) => {
     const expense: Expense = buildExpenseFromInputs(inputs, budgets, formType);
     setExpenses!!((currentExpenses) => addExpense(expense, currentExpenses));
     setBudgets!!((currentBudgets) => updateBudget(expense, currentBudgets));
