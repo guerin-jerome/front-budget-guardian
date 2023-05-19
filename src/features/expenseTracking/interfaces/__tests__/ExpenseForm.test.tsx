@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { describe, test, expect, vi } from "vitest";
+import { test, expect, vi } from "vitest";
 import { ExpenseForm } from "../expenseForm/ExpenseForm";
 import { renderWithAllProviders } from "@/common/utils/test";
 import { FormType } from "../../hooks/useExpenseTracking";
