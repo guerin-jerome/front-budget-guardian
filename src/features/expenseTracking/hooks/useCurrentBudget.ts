@@ -1,14 +1,16 @@
 import { Budget } from "@/entities/Budget";
 import {
   buildLibelleCurrentValue,
-  buildLibelleTypeBudget,
   calculateBudgetConsumedPercentage,
   isBudgetReminingCloseToZero,
 } from "../domain";
+import { buildLibelleTypeBudget } from "@/common/utils/budget";
 
 export const useCurrentBudget = (budget: Budget) => {
+  const { type } = budget;
+
   const libelleCurrentValue = buildLibelleCurrentValue(budget);
-  const libelleType = buildLibelleTypeBudget(budget);
+  const libelleType = buildLibelleTypeBudget(type);
   const percentConsummed = calculateBudgetConsumedPercentage(budget);
   const isCloseToZero = isBudgetReminingCloseToZero(budget);
 

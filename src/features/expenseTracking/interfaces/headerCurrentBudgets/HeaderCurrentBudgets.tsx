@@ -3,8 +3,8 @@ import { Button, ButtonAppearence, Typography } from "@/common/components";
 import { TOTAL_REMAINING_TITLE_SECTION } from "../label";
 import { useHeaderCurrentBudget } from "../../hooks/useHeaderCurrentBudget";
 import { DisplayedForm } from "../../hooks/useExpenseTracking";
-import "./style.css";
 import { ResetIcon } from "./ResetIcon";
+import "./style.css";
 
 const { Title } = Typography;
 
