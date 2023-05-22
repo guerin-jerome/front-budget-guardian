@@ -11,7 +11,7 @@ export const CurrentBudget = (budget: Budget) => {
     useCurrentBudget(budget);
 
   return (
-    <Card>
+    <Card className="current-budget-card">
       <Title level={3}>{name}</Title>
       <div className="budget-info">
         <Muted>{libelleType}</Muted>
