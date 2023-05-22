@@ -1,5 +1,3 @@
-export const EXPENSES_TRACKING_TITLE = "Suivi des dépenses";
-
 /**
  * Section du formulaire d'ajout d'une dépense
  */
