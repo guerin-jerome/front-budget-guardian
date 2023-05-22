@@ -3,6 +3,7 @@ import { test, expect, describe } from "vitest";
 import { renderWithAllProviders } from "@/common/utils/test";
 import { ExpenseCard } from "../expenseCard/ExpenseCard";
 import { MOCK_EXPENSE, MOCK_REMOVE_EXPENSE_SAVED } from "@/mocks/expense";
+import { BudgetTypeLibelle } from "@/entities/Budget";
 
 describe("<ExpenseCard />", () => {
   test("with variable budget - added", async () => {
@@ -14,7 +15,7 @@ describe("<ExpenseCard />", () => {
     const budgetLabel = screen.getByText("Budget :");
     const budgetValue = screen.getByText("Loisirs");
     const budgetTypeLabel = screen.getByText("Type :");
-    const budgetTypeFormatted = screen.getByText("Dépense variable");
+    const budgetTypeFormatted = screen.getByText(BudgetTypeLibelle.VARIABLE);
 
     expect(expenseValue).toBeDefined();
     expect(expenseDetails).toBeDefined();
@@ -34,7 +35,7 @@ describe("<ExpenseCard />", () => {
     const budgetLabel = screen.getByText("Budget :");
     const budgetValue = screen.getByText("Placement financier");
     const budgetTypeLabel = screen.getByText("Type :");
-    const budgetTypeFormatted = screen.getByText("Épargne");
+    const budgetTypeFormatted = screen.getByText(BudgetTypeLibelle.SAVED);
 
     expect(expenseValue).toBeDefined();
     expect(expenseDetails).toBeDefined();
