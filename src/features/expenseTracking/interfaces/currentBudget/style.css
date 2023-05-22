@@ -1,18 +1,19 @@
-.expense-tracking .card {
+.current-budget-card {
   background-color: white;
+  padding: 20px;
 }
 
-h3 {
+.current-budget-card h3 {
   margin: 0;
 }
 
-.budget-info {
-  margin-top: 10px;
+.current-budget-card .budget-info {
+  margin-top: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.progress-bar {
+.current-budget-card .progress-bar {
   margin-top: 10px;
 }
