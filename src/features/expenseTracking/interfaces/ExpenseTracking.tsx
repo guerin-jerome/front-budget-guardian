@@ -14,7 +14,7 @@ export const ExpenseTracking = () => {
   const { isFormDisplay, formType } = displayedForm;
 
   return (
-    <div className="expense-tracking">
+    <>
       <HeaderCurrentBudgets
         isFormDisplay={isFormDisplay}
         setDisplayedForm={setDisplayedForm}
@@ -25,6 +25,6 @@ export const ExpenseTracking = () => {
       {budgets.map((budget) => (
         <CurrentBudget {...budget} key={budget.id} />
       ))}
-    </div>
+    </>
   );
 };

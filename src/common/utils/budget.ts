@@ -5,7 +5,7 @@ import { Budget, BudgetType, BudgetTypeLibelle } from "@/entities/Budget";
  * @param budget
  * @returns {BudgetTypeLibelle}
  */
-export const buildLibelleTypeBudget = ({ type }: Budget): BudgetTypeLibelle => {
+export const buildLibelleTypeBudget = (type: BudgetType): BudgetTypeLibelle => {
   switch (type) {
     case BudgetType.FIXE:
       return BudgetTypeLibelle.FIXE;

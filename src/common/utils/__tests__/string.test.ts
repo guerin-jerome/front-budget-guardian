@@ -1,5 +1,5 @@
 import { expect, describe, test } from "vitest";
-import { replacePointByComma } from "../string";
+import { capitalizeFirstLetter, replacePointByComma } from "../string";
 
 describe("replacePointByComma()", () => {
   test("with 0.50", () => {
@@ -18,5 +18,19 @@ describe("replacePointByComma()", () => {
     expect(replacePointByComma("Hello. Multiple points.")).toEqual(
       "Hello, Multiple points,"
     );
+  });
+});
+
+describe("capitalizeFirstLetter()", () => {
+  test("with letter", () => {
+    expect(capitalizeFirstLetter("hello !")).toEqual("Hello !");
+  });
+
+  test("with number", () => {
+    expect(capitalizeFirstLetter("3ello !")).toEqual("3ello !");
+  });
+
+  test("with symbol", () => {
+    expect(capitalizeFirstLetter("!ello !")).toEqual("!ello !");
   });
 });
