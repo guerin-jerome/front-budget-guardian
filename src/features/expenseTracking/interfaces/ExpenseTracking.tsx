@@ -1,6 +1,4 @@
-import { Typography } from "@/common/components";
 import { CurrentBudget } from "./currentBudget/CurrentBudget";
-import { EXPENSES_TRACKING_TITLE } from "./label";
 import { useExpenseTracking } from "../hooks/useExpenseTracking";
 import { ExpenseForm } from "./expenseForm/ExpenseForm";
 import { HeaderCurrentBudgets } from "./headerCurrentBudgets/HeaderCurrentBudgets";
@@ -16,8 +14,7 @@ export const ExpenseTracking = () => {
   const { isFormDisplay, formType } = displayedForm;
 
   return (
-    <div className="container">
-      <Title level={2}>{EXPENSES_TRACKING_TITLE}</Title>
+    <>
       <HeaderCurrentBudgets
         isFormDisplay={isFormDisplay}
         setDisplayedForm={setDisplayedForm}
@@ -28,6 +25,6 @@ export const ExpenseTracking = () => {
       {budgets.map((budget) => (
         <CurrentBudget {...budget} key={budget.id} />
       ))}
-    </div>
+    </>
   );
 };
