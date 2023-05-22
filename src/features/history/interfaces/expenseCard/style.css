@@ -1,0 +1,29 @@
+.expense-card {
+  display: grid;
+  grid-template-columns: 5fr repeat(2, 3fr);
+  padding: 20px;
+}
+
+.expense-card p {
+  margin: 0;
+}
+
+.expense-card .bold.positive {
+  color: #218c74;
+}
+.expense-card .bold.negative {
+  color: #b33939;
+}
+
+.expense-informations {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.expense-budget-name,
+.expense-budget-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
