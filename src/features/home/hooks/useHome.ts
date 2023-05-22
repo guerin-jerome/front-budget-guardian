@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { buildMenuItems } from "../domain";
 import { MobileContext } from "@/context/MobileContext";
 import { useNavigate } from "react-router-dom";
+import { findTitleByMenuItem } from "../domain/findTitleByMenuItem";
 
 export enum MENU_ITEM {
   EXPENSES_TRACKING,
@@ -15,11 +16,12 @@ export const useHome = () => {
   const navigate = useNavigate();
 
   const menuItems = buildMenuItems(activeItem, isMobileDevice, setActiveItem);
+  const pageTitle = findTitleByMenuItem(activeItem);
 
   useEffect(() => {
     const itemActive = menuItems.find((item) => item.isActive);
     navigate(itemActive?.href!!);
   }, [activeItem]);
 
-  return { menuItems };
+  return { menuItems, pageTitle };
 };

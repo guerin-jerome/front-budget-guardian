@@ -1,11 +1,7 @@
 import { screen } from "@testing-library/react";
 import { test, describe, expect } from "vitest";
 import { ExpenseTracking } from "../ExpenseTracking";
-import {
-  EXPENSE_DETAILS_LABEL,
-  EXPENSES_TRACKING_TITLE,
-  TOTAL_REMAINING_TITLE_SECTION,
-} from "../label";
+import { EXPENSE_DETAILS_LABEL, TOTAL_REMAINING_TITLE_SECTION } from "../label";
 import { renderWithAllProviders } from "@/common/utils/test";
 import userEvent from "@testing-library/user-event";
 
@@ -45,9 +41,6 @@ describe("<ExpenseTracking />", () => {
   test("vue initiale", () => {
     renderWithAllProviders(<ExpenseTracking />);
 
-    const title = screen.getByRole("heading", {
-      name: EXPENSES_TRACKING_TITLE,
-    });
     const totalRemainingTitle = screen.getByText(
       TOTAL_REMAINING_TITLE_SECTION,
       {
@@ -57,7 +50,6 @@ describe("<ExpenseTracking />", () => {
     const totalRemaining = screen.findByText(/615,60 €/i);
     const buttons = screen.getAllByRole("button");
 
-    expect(title).toBeDefined();
     expect(totalRemainingTitle).toBeDefined();
     expect(totalRemaining).toBeDefined();
     expect(buttons.length).toEqual(3);
