@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PAGES, routes } from "./routes";
 import { ExpenseTracking } from "@/features/expenseTracking/interfaces";
 import { Home } from "@/features/home/interfaces";
+import { History } from "@/features/history/interfaces";
 
 export const Router = () => (
   <BrowserRouter>
@@ -17,7 +18,7 @@ export const Router = () => (
           path={routes[PAGES.BUDGETS_MANAGEMENT]}
           element={<p>Budgets management</p>}
         />
-        <Route path={routes[PAGES.HISTORY]} element={<p>History</p>} />
+        <Route path={routes[PAGES.HISTORY]} element={<History />} />
       </Route>
     </Routes>
   </BrowserRouter>
