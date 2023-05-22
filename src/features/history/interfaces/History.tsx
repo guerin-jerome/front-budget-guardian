@@ -1,13 +1,15 @@
 import { ExpenseCard } from "./expenseCard/ExpenseCard";
-import { MOCK_EXPENSE } from "@/mocks/expense";
+import { useHistory } from "../hooks/useHistory";
 import "./style.css";
 
 export const History = () => {
+  const { expensesFormatted } = useHistory();
+
   return (
     <ul className="expense-list">
-      <ExpenseCard {...MOCK_EXPENSE} />
-      <ExpenseCard {...MOCK_EXPENSE} />
-      <ExpenseCard {...MOCK_EXPENSE} />
+      {expensesFormatted.map((expense) => (
+        <ExpenseCard key={expense.id} {...expense} />
+      ))}
     </ul>
   );
 };

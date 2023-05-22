@@ -71,7 +71,7 @@ export const ExpenseForm = ({
   const amountInput = register("amount");
 
   return (
-    <Card className="expense-card">
+    <Card className="expense-form-card">
       <form
         className="expense-form"
         onSubmit={handleSubmit(handleSubmitExpenseForm)}
