@@ -1,7 +1,5 @@
-import { Label, Select, Textbox, Typography } from "@/common/components";
+import { Label, Select, Textbox } from "@/common/components";
 import "./style.css";
-
-const { Bold } = Typography;
 
 export const HeaderHistory = () => (
   <header className="header-history">
