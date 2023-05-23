@@ -1,17 +1,25 @@
 import { Label, Select, Textbox } from "@/common/components";
+import {
+  BUDGET_IMPACTED_SELECT_LABEL,
+  BUDGET_TYPE_SELECT_LABEL,
+  DETAILS_INPUT_LABEL,
+  SORT_ORDER_BUDGET_DATE_LABEL,
+} from "../label";
 import "./style.css";
 
 export const HeaderHistory = () => (
   <header className="header-history">
     <div className="filter">
-      <Label htmlFor="filter_budget_name">Détails :</Label>
+      <Label htmlFor="filter_budget_name">{DETAILS_INPUT_LABEL}</Label>
       <Textbox
         id="filter_budget_name"
         placeholder="Exemple : courses de la semaine"
       />
     </div>
     <div className="filter">
-      <Label htmlFor="filter_budget_impacted">Budget :</Label>
+      <Label htmlFor="filter_budget_impacted">
+        {BUDGET_IMPACTED_SELECT_LABEL}
+      </Label>
       <Select
         id="filter_budget_impacted"
         options={[]}
@@ -21,7 +29,7 @@ export const HeaderHistory = () => (
       />
     </div>
     <div className="filter">
-      <Label htmlFor="filter_budget_type">Type :</Label>
+      <Label htmlFor="filter_budget_type">{BUDGET_TYPE_SELECT_LABEL}</Label>
       <Select
         id="filter_budget_type"
         options={[]}
@@ -31,7 +39,7 @@ export const HeaderHistory = () => (
       />
     </div>
     <div className="filter">
-      <Label htmlFor="filter_date">Trier par date :</Label>
+      <Label htmlFor="filter_date">{SORT_ORDER_BUDGET_DATE_LABEL}</Label>
       <Select
         id="filter_date"
         options={[]}
