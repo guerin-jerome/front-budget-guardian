@@ -1,0 +1,9 @@
+.header-history {
+  display: grid;
+  grid-template-columns: 300px repeat(3, 1fr);
+  column-gap: 10px;
+}
+
+.header-history input {
+  width: 280px;
+}

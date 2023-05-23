@@ -3,6 +3,7 @@ import classNames from "classnames";
 import "./textbox.css";
 
 export const Textbox = ({
+  id,
   step,
   placeholder,
   type = "text",
@@ -11,6 +12,7 @@ export const Textbox = ({
   hasError,
 }: TextboxProps) => (
   <input
+    id={id}
     className={classNames({ error: hasError })}
     aria-invalid={hasError}
     data-testid={testId}
