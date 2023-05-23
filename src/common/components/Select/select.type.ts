@@ -7,9 +7,11 @@ export type SelectOption = {
 };
 
 export type SelectProps = {
+  id?: string;
   options: SelectOption[];
-  hasError: boolean;
+  hasError?: boolean;
   register?: UseFormRegisterReturn;
   defaultValue?: string;
+  isDefaultDisabled?: boolean;
   defaultText?: string;
 };
