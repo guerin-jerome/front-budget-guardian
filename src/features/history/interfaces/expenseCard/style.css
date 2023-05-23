@@ -27,3 +27,24 @@
   flex-direction: column;
   justify-content: center;
 }
+
+@media only screen and (max-width: 750px) {
+  .expense-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    padding: 20px;
+  }
+
+  .expense-informations {
+    grid-row: 1 / span 2;
+    grid-column: 1;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+  }
+
+  .expense-budget-name {
+    margin-bottom: 5px;
+  }
+}
