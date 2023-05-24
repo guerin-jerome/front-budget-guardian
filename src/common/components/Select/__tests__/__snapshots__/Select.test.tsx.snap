@@ -3,8 +3,14 @@
 exports[`<Select /> > matchs snapshot 1`] = `
 <div>
   <select
-    id="test"
-    name="test"
-  />
+    class=""
+  >
+    <option
+      disabled=""
+      value="initial_value"
+    >
+      Sélectionnez une valeur
+    </option>
+  </select>
 </div>
 `;

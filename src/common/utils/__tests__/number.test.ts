@@ -6,6 +6,10 @@ describe("calculatePercentageRounded()", () => {
     expect(calculatePercentageRounded(0, 0)).toEqual(0);
   });
 
+  test("with 0 and 100", () => {
+    expect(calculatePercentageRounded(0, 100)).toEqual(0);
+  });
+
   test("with -10 and 5", () => {
     expect(calculatePercentageRounded(-10, 5)).toEqual(0);
   });

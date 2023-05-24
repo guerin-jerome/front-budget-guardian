@@ -1,0 +1,24 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Menu /> > matchs snapshot 1`] = `
+<div>
+  <nav
+    class="navbar"
+  >
+    <ul
+      class="navbar-nav"
+    >
+      <li
+        class="nav-item"
+      >
+        <a
+          class="nav-link"
+          href="/test"
+        >
+          TEST
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

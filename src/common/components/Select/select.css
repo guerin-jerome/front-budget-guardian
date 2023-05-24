@@ -20,3 +20,7 @@ select {
   background-size: auto 50%;
   background-position-x: calc(100% - 10px);
 }
+
+select.error {
+  border: 1.5px solid #b33939;
+}

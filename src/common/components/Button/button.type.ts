@@ -7,11 +7,11 @@ export enum ButtonAppearence {
   SUCCESS = "success",
 }
 
-export type ButtonProps = {
+export type ButtonProps = Partial<{
   onClick: MouseEventHandler;
   children: ReactNode;
-  type?: "button" | "submit" | "reset";
-  appearence?: ButtonAppearence;
-  className?: string;
-  isIconMode?: boolean;
-};
+  type: "button" | "submit" | "reset";
+  appearence: ButtonAppearence;
+  className: string;
+  isIconMode: boolean;
+}>;

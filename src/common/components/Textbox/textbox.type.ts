@@ -1,10 +1,10 @@
-import { ChangeEventHandler } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 
-export type TextboxProps = {
-  id: string;
-  name: string;
-  onChange: ChangeEventHandler;
-  type?: "text" | "number";
-  step?: number;
-  placeholder?: string;
-};
+export type TextboxProps = Partial<{
+  register: UseFormRegisterReturn;
+  type: "text" | "number" | "date";
+  placeholder: string;
+  step: number;
+  testId: string;
+  hasError: boolean;
+}>;

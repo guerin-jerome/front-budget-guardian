@@ -18,6 +18,7 @@ export default defineConfig({
         "coverage/**",
         "dist/**",
         "src/mocks/*.ts",
+        "src/entities/*.ts",
         "**/__tests__/**",
         "**/*.type.ts",
         "*.config.ts",
