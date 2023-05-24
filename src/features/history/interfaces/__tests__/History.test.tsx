@@ -11,49 +11,50 @@ import {
 } from "../label";
 import userEvent from "@testing-library/user-event";
 
+export const formExpensePresenceExpected = () => {
+  const detailsInput = screen.getByRole("textbox", {
+    name: DETAILS_INPUT_LABEL,
+  });
+  const budgetImpactedSelect = screen.getByRole("combobox", {
+    name: BUDGET_IMPACTED_SELECT_LABEL,
+  });
+  const budgetTypeSelect = screen.getByRole("combobox", {
+    name: BUDGET_TYPE_SELECT_LABEL,
+  });
+  const sortOrderBudgetDateSelect = screen.getByRole("combobox", {
+    name: SORT_ORDER_BUDGET_DATE_LABEL,
+  });
+  const resetButton = screen.getByRole("button");
+
+  expect(detailsInput).toBeDefined();
+  expect(budgetImpactedSelect).toBeDefined();
+  expect(budgetTypeSelect).toBeDefined();
+  expect(sortOrderBudgetDateSelect).toBeDefined();
+  expect(resetButton).toBeDefined();
+};
+
+const courseExpensePresenceExpected = () => {
+  const amountExpense = screen.getByText(/125,00€/i);
+  const detailsExpense = screen.getByText(/courses de la semaine/i);
+  const dateExpense = screen.getByText(/dimanche 5 février 2023/i);
+
+  expect(amountExpense).toBeDefined();
+  expect(detailsExpense).toBeDefined();
+  expect(dateExpense).toBeDefined();
+};
+
 describe("<History />", () => {
   test("vue initiale", () => {
     renderWithAllProviders(<History />);
 
-    const detailsInput = screen.getByRole("textbox", {
-      name: DETAILS_INPUT_LABEL,
-    });
-    const budgetImpactedSelect = screen.getByRole("combobox", {
-      name: BUDGET_IMPACTED_SELECT_LABEL,
-    });
-    const budgetTypeSelect = screen.getByRole("combobox", {
-      name: BUDGET_TYPE_SELECT_LABEL,
-    });
-    const sortOrderBudgetDateSelect = screen.getByRole("combobox", {
-      name: SORT_ORDER_BUDGET_DATE_LABEL,
-    });
-    const resetButton = screen.getByRole("button");
-
-    expect(detailsInput).toBeDefined();
-    expect(budgetImpactedSelect).toBeDefined();
-    expect(budgetTypeSelect).toBeDefined();
-    expect(sortOrderBudgetDateSelect).toBeDefined();
-    expect(resetButton).toBeDefined();
-
-    const amountExpense = screen.getByText(/125,00€/i);
-    const detailsExpense = screen.getByText(/courses de la semaine/i);
-    const dateExpense = screen.getByText(/dimanche 5 février 2023/i);
-
-    expect(amountExpense).toBeDefined();
-    expect(detailsExpense).toBeDefined();
-    expect(dateExpense).toBeDefined();
+    formExpensePresenceExpected();
+    courseExpensePresenceExpected();
   });
 
   test("reset expenses", async () => {
     renderWithAllProviders(<History />);
 
-    const amountExpense = screen.getByText(/125,00€/i);
-    const detailsExpense = screen.getByText(/courses de la semaine/i);
-    const dateExpense = screen.getByText(/dimanche 5 février 2023/i);
-
-    expect(amountExpense).toBeDefined();
-    expect(detailsExpense).toBeDefined();
-    expect(dateExpense).toBeDefined();
+    courseExpensePresenceExpected();
 
     const resetButton = screen.getByRole("button");
     expect(resetButton).toBeDefined();
