@@ -1,6 +1,14 @@
 # Changelog
 
-Version actuelle : 0.2.1
+Version actuelle : 0.3.0
+
+---
+
+## 0.3.0
+
+**Added**
+
+- Historique des dépenses, version statique
 
 ---
 
