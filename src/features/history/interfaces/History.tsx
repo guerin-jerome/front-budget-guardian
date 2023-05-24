@@ -3,6 +3,7 @@ import { useHistory } from "../hooks/useHistory";
 import { HeaderHistory } from "./headerHistory/HeaderHistory";
 import { Typography } from "@/common/components";
 import "./style.css";
+import { EMPTY_EXPENSE_TEXT } from "./label";
 
 const { Text } = Typography;
 
@@ -21,7 +22,7 @@ export const History = () => {
           </ul>
         </>
       ) : (
-        <Text>Vous n'avez pas encore de dépenses.</Text>
+        <Text>{EMPTY_EXPENSE_TEXT}</Text>
       )}
     </>
   );
