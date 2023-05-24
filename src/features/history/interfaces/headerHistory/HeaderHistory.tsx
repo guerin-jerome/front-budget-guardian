@@ -1,4 +1,10 @@
-import { Label, Select, Textbox } from "@/common/components";
+import {
+  Button,
+  ButtonAppearence,
+  Label,
+  Select,
+  Textbox,
+} from "@/common/components";
 import {
   BUDGET_IMPACTED_SELECT_LABEL,
   BUDGET_TYPE_SELECT_LABEL,
@@ -6,6 +12,7 @@ import {
   SORT_ORDER_BUDGET_DATE_LABEL,
 } from "../label";
 import "./style.css";
+import { TrashIcon } from "./TrashIcon";
 
 export const HeaderHistory = () => (
   <header className="header-history">
@@ -48,5 +55,12 @@ export const HeaderHistory = () => (
         isDefaultDisabled={false}
       />
     </div>
+    <Button
+      onClick={() => {}}
+      isIconMode
+      appearence={ButtonAppearence.SECONDARY}
+    >
+      <TrashIcon />
+    </Button>
   </header>
 );
