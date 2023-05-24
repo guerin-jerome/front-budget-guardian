@@ -10,7 +10,7 @@ import {
 } from "../label";
 
 describe("<HeaderHistory />", () => {
-  test("initial view", async () => {
+  test("vue initiale", () => {
     renderWithAllProviders(<HeaderHistory />);
 
     const detailsInput = screen.getByRole("textbox", {
@@ -25,10 +25,12 @@ describe("<HeaderHistory />", () => {
     const sortOrderBudgetDateSelect = screen.getByRole("combobox", {
       name: SORT_ORDER_BUDGET_DATE_LABEL,
     });
+    const resetButton = screen.getByRole("button");
 
     expect(detailsInput).toBeDefined();
     expect(budgetImpactedSelect).toBeDefined();
     expect(budgetTypeSelect).toBeDefined();
     expect(sortOrderBudgetDateSelect).toBeDefined();
+    expect(resetButton).toBeDefined();
   });
 });
