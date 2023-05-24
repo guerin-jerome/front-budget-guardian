@@ -1,59 +1,41 @@
-import { render, screen } from "@testing-library/react";
-import { describe, test, expect } from "vitest";
+import { screen } from "@testing-library/react";
+import { test, expect, vi } from "vitest";
 import { ExpenseForm } from "../expenseForm/ExpenseForm";
+import { renderWithAllProviders } from "@/common/utils/test";
+import { FormType } from "../../hooks/useExpenseTracking";
 import {
   EXPENSE_AMOUNT_LABEL,
   EXPENSE_BUDGET_IMPACTED_LABEL,
-  EXPENSE_DATE_LABEL,
   EXPENSE_DETAILS_LABEL,
 } from "../label";
-import userEvent from "@testing-library/user-event";
 
-const formFillingScenario = async (
-  details: string,
-  budgetImpacted: string,
-  date: string,
-  amount: string
-) => {
-  const textboxDetails = screen.getByRole("textbox", {
-    name: EXPENSE_DETAILS_LABEL,
-  });
-  await userEvent.type(textboxDetails, details);
-  expect(textboxDetails).toBeDefined();
+test("<ExpenseForm />", async () => {
+  const setDisplayedForm = vi.fn();
 
-  const selectBudgetImpacted = screen.getByRole("combobox", {
-    name: EXPENSE_BUDGET_IMPACTED_LABEL,
-  });
-  await userEvent.selectOptions(selectBudgetImpacted, budgetImpacted);
-  expect(selectBudgetImpacted).toBeDefined();
+  renderWithAllProviders(
+    <ExpenseForm formType={FormType.ADD} setDisplayedForm={setDisplayedForm} />
+  );
 
-  const datepicker = screen.getByLabelText(EXPENSE_DATE_LABEL);
-  await userEvent.type(datepicker, date);
-  expect(datepicker).toBeDefined();
+  const detailsLabel = screen.getByText(EXPENSE_DETAILS_LABEL);
+  const detailsInput = screen.getByRole("textbox");
+  expect(detailsLabel).toBeDefined();
+  expect(detailsInput).toBeDefined();
 
-  const textboxAmount = screen.getByRole("spinbutton", {
-    name: EXPENSE_AMOUNT_LABEL,
-  });
-  await userEvent.type(textboxAmount, amount);
-  expect(textboxAmount).toBeDefined();
-};
+  const budgetImpactedLabel = screen.getByText(EXPENSE_BUDGET_IMPACTED_LABEL);
+  const budgetImpactedCombobox = screen.getByRole("combobox");
+  expect(budgetImpactedLabel).toBeDefined();
+  expect(budgetImpactedCombobox).toBeDefined();
 
-describe("<ExpenseForm />", () => {
-  test("fill form and click remove button", async () => {
-    render(<ExpenseForm />);
+  const dateLabel = screen.getByText(EXPENSE_DETAILS_LABEL);
+  const dateInput = screen.getByTestId("date-input-expense");
+  expect(dateLabel).toBeDefined();
+  expect(dateInput).toBeDefined();
 
-    await formFillingScenario("details", "Loisirs", "18/01/1999", "100");
+  const amountLabel = screen.getByText(EXPENSE_AMOUNT_LABEL);
+  const amountInput = screen.getByRole("spinbutton");
+  expect(amountLabel).toBeDefined();
+  expect(amountInput).toBeDefined();
 
-    const buttonRemove = screen.getByRole("button", { name: "-" });
-    await userEvent.click(buttonRemove);
-  });
-
-  test("fill form and click add button", async () => {
-    render(<ExpenseForm />);
-
-    await formFillingScenario("details", "Loisirs", "18/01/1999", "100");
-
-    const buttonAdd = screen.getByRole("button", { name: "+" });
-    await userEvent.click(buttonAdd);
-  });
+  const buttons = screen.getAllByRole("button");
+  expect(buttons.length).toEqual(2);
 });

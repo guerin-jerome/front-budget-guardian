@@ -1,4 +1,4 @@
-import { ChangeEventHandler } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 export type SelectOption = {
   value: string;
@@ -7,8 +7,9 @@ export type SelectOption = {
 };
 
 export type SelectProps = {
-  id: string;
-  name: string;
   options: SelectOption[];
-  onChange: ChangeEventHandler<HTMLSelectElement>;
+  hasError: boolean;
+  register?: UseFormRegisterReturn;
+  defaultValue?: string;
+  defaultText?: string;
 };

@@ -12,3 +12,16 @@ exports[`<Progress /> > matchs snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`<Progress /> > with error 1`] = `
+<div>
+  <div
+    class="progress-bar"
+  >
+    <div
+      class="progress error"
+      style="width: 10%;"
+    />
+  </div>
+</div>
+`;

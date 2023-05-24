@@ -13,4 +13,10 @@ describe("replacePointByComma()", () => {
   test("with undefined", () => {
     expect(replacePointByComma()).toBeUndefined();
   });
+
+  test("with multiple points", () => {
+    expect(replacePointByComma("Hello. Multiple points.")).toEqual(
+      "Hello, Multiple points,"
+    );
+  });
 });

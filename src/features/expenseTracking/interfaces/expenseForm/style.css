@@ -22,3 +22,18 @@
 .form-actions button {
   align-self: flex-end;
 }
+
+@media only screen and (max-width: 750px) {
+  .expense-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .form-actions {
+    column-gap: 8px;
+  }
+}

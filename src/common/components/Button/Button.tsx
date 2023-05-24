@@ -8,7 +8,7 @@ export const Button = ({
   isIconMode,
   type = "button",
   appearence = ButtonAppearence.PRIMARY,
-  onClick,
+  onClick = () => {},
 }: ButtonProps) => (
   <button
     className={classNames(className, appearence, { icon: isIconMode })}

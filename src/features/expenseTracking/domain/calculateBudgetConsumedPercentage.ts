@@ -10,8 +10,8 @@ import { Budget, BudgetType } from "@/entities/Budget";
 export const calculateBudgetConsumedPercentage = ({
   type,
   base,
-  spending,
+  remaining,
 }: Budget): string =>
-  type !== BudgetType.SAVED && !!spending
-    ? `${calculatePercentageRounded(spending, base).toString()}%`
+  type !== BudgetType.SAVED
+    ? `${calculatePercentageRounded(remaining!!, base).toString()}%`
     : "100%";
