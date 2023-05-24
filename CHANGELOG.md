@@ -1,6 +1,14 @@
 # Changelog
 
-Version actuelle : 0.2.0
+Version actuelle : 0.2.1
+
+---
+
+## 0.2.1
+
+**Fix**
+
+- Erreur rebase des dépendances
 
 ---
 
