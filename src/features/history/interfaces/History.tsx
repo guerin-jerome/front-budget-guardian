@@ -14,7 +14,10 @@ export const History = () => {
     <>
       {!!expenses.length && (
         <>
-          <HeaderHistory setExpenseList={setExpenseList} />
+          <HeaderHistory
+            expenseList={expenseList}
+            setExpenseList={setExpenseList}
+          />
           <ul className="expense-list">
             {expenseList.map((expense) => (
               <ExpenseCard key={expense.id} {...expense} />

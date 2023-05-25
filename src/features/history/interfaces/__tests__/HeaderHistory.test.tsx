@@ -5,7 +5,9 @@ import { formExpensePresenceExpected } from "./History.test";
 
 describe("<HeaderHistory />", () => {
   test("vue initiale", () => {
-    renderWithAllProviders(<HeaderHistory setExpenseList={() => {}} />);
+    renderWithAllProviders(
+      <HeaderHistory expenseList={[]} setExpenseList={() => {}} />
+    );
 
     formExpensePresenceExpected();
   });
