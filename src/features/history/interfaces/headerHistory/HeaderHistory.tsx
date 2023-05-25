@@ -11,12 +11,19 @@ import {
   DETAILS_INPUT_LABEL,
   SORT_ORDER_BUDGET_DATE_LABEL,
 } from "../label";
-import "./style.css";
 import { TrashIcon } from "./TrashIcon";
 import { useHeaderHistory } from "../../hooks/useHeaderHistory";
+import { Dispatch, SetStateAction } from "react";
+import { Expense } from "@/entities/Expense";
+import "./style.css";
 
-export const HeaderHistory = () => {
-  const { handleClickReset } = useHeaderHistory();
+type HeaderHistory = {
+  setExpenseList: Dispatch<SetStateAction<Expense[]>>;
+};
+
+export const HeaderHistory = ({ setExpenseList }: HeaderHistory) => {
+  const { sortByDateSelectValues, handleClickReset, handleChangeSortDate } =
+    useHeaderHistory(setExpenseList);
 
   return (
     <header className="header-history">
@@ -50,13 +57,14 @@ export const HeaderHistory = () => {
         />
       </div>
       <div className="filter">
-        <Label htmlFor="filter_date">{SORT_ORDER_BUDGET_DATE_LABEL}</Label>
+        <Label htmlFor="sort_date">{SORT_ORDER_BUDGET_DATE_LABEL}</Label>
         <Select
-          id="filter_date"
-          options={[]}
-          defaultText="Tous"
+          id="sort_date"
+          options={sortByDateSelectValues}
+          defaultText="Plus récent"
           defaultValue="initial_value"
           isDefaultDisabled={false}
+          onChange={handleChangeSortDate}
         />
       </div>
       <Button

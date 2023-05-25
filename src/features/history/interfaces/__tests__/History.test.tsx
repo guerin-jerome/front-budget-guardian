@@ -10,6 +10,7 @@ import {
   SORT_ORDER_BUDGET_DATE_LABEL,
 } from "../label";
 import userEvent from "@testing-library/user-event";
+import { OrderValue } from "../../hooks/useHeaderHistory";
 
 export const formExpensePresenceExpected = () => {
   const detailsInput = screen.getByRole("textbox", {
@@ -67,5 +68,16 @@ describe("<History />", () => {
 
     const emptyExpenseText = screen.getByText(EMPTY_EXPENSE_TEXT);
     expect(emptyExpenseText).toBeDefined();
+  });
+
+  test("change order by date", async () => {
+    renderWithAllProviders(<History />);
+
+    const sortByDateSelect = screen.getByRole("combobox", {
+      name: SORT_ORDER_BUDGET_DATE_LABEL,
+    });
+
+    await userEvent.selectOptions(sortByDateSelect, OrderValue.MORE_OLDER);
+    await userEvent.selectOptions(sortByDateSelect, OrderValue.MORE_RECENT);
   });
 });
