@@ -8,6 +8,7 @@ export const Select = ({
   hasError,
   register,
   defaultValue,
+  onChange,
   isDefaultDisabled = true,
   defaultText = "Sélectionnez une valeur",
 }: SelectProps) => {
@@ -20,9 +21,10 @@ export const Select = ({
   return (
     <select
       id={id}
-      {...register}
+      onChange={onChange}
       defaultValue={defaultValue}
       className={classNames({ error: hasError })}
+      {...register}
     >
       {[placeholderSelect, ...options].map(({ value, text, disabled }) => (
         <option key={value} value={value} disabled={disabled}>

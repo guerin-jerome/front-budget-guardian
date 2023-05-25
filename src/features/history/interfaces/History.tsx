@@ -8,22 +8,21 @@ import { EMPTY_EXPENSE_TEXT } from "./label";
 const { Text } = Typography;
 
 export const History = () => {
-  const { expensesFormatted } = useHistory();
+  const { expenses, expenseList, setExpenseList } = useHistory();
 
   return (
     <>
-      {expensesFormatted.length ? (
+      {!!expenses.length && (
         <>
-          <HeaderHistory />
+          <HeaderHistory setExpenseList={setExpenseList} />
           <ul className="expense-list">
-            {expensesFormatted.map((expense) => (
+            {expenseList.map((expense) => (
               <ExpenseCard key={expense.id} {...expense} />
             ))}
           </ul>
         </>
-      ) : (
-        <Text>{EMPTY_EXPENSE_TEXT}</Text>
       )}
+      {!expenses.length && <Text>{EMPTY_EXPENSE_TEXT}</Text>}
     </>
   );
 };
