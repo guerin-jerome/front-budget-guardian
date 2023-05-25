@@ -30,6 +30,7 @@ export const HeaderHistory = ({
     budgetNameSelectValues,
     budgetTypeSelectValues,
     sortByDateSelectValues,
+    handleChangeExpenseName,
     handleChangeBudgetName,
     handleChangeBudgetType,
     handleChangeSortDate,
@@ -39,10 +40,11 @@ export const HeaderHistory = ({
   return (
     <header className="header-history">
       <div className="filter">
-        <Label htmlFor="filter_budget_name">{DETAILS_INPUT_LABEL}</Label>
+        <Label htmlFor="filter_expense_name">{DETAILS_INPUT_LABEL}</Label>
         <Textbox
-          id="filter_budget_name"
+          id="filter_expense_name"
           placeholder="Exemple : courses de la semaine"
+          onChange={handleChangeExpenseName}
         />
       </div>
       <div className="filter">
