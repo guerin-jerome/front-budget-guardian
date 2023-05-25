@@ -11,6 +11,7 @@ import {
 } from "../label";
 import userEvent from "@testing-library/user-event";
 import { OrderValue } from "../../hooks/useHeaderHistory";
+import { BudgetTypeLibelle } from "@/entities/Budget";
 
 export const formExpensePresenceExpected = () => {
   const detailsInput = screen.getByRole("textbox", {
@@ -68,6 +69,21 @@ describe("<History />", () => {
 
     const emptyExpenseText = screen.getByText(EMPTY_EXPENSE_TEXT);
     expect(emptyExpenseText).toBeDefined();
+  });
+
+  test("filter by budget type", async () => {
+    renderWithAllProviders(<History />);
+
+    const expenseLoisir = screen.getByText("Details loisirs");
+    expect(expenseLoisir).toBeDefined();
+
+    const sortByDateSelect = screen.getByRole("combobox", {
+      name: BUDGET_TYPE_SELECT_LABEL,
+    });
+
+    await userEvent.selectOptions(sortByDateSelect, BudgetTypeLibelle.SAVED);
+
+    expect(screen.queryByText("Details loisirs")).toBeNull();
   });
 
   test("change order by date", async () => {

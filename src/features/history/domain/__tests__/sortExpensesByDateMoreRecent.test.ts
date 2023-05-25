@@ -10,8 +10,9 @@ describe("sortExpensesByDateMoreRecent()", () => {
   test("changement of order", () => {
     const sortedExpenses = sortExpensesByDateMoreRecent(MOCK_EXPENSES);
 
-    expect(sortedExpenses[0].date).toBe("2023-02-05");
-    expect(sortedExpenses[1].date).toBe("1999-01-18");
+    expect(sortedExpenses[0].date).toBe("2023-02-06");
+    expect(sortedExpenses[1].date).toBe("2023-02-05");
+    expect(sortedExpenses[2].date).toBe("1999-01-18");
   });
 
   test("no changement of order", () => {
