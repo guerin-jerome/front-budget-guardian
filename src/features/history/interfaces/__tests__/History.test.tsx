@@ -71,8 +71,22 @@ describe("<History />", () => {
     expect(emptyExpenseText).toBeDefined();
   });
 
-  test("filter by budget type and after by name", async () => {
+  test("filter by expense name, budget type and by budget name", async () => {
     renderWithAllProviders(<History />);
+
+    expect(screen.queryByText("Besoin personnel")).toBeDefined();
+    expect(screen.queryByText("Courses de la semaine")).toBeDefined();
+    expect(screen.queryByText("Details loisirs")).toBeDefined();
+
+    const expenseNameInput = screen.getByLabelText(DETAILS_INPUT_LABEL);
+
+    await userEvent.type(expenseNameInput, "Deta");
+
+    expect(screen.queryByText("Besoin personnel")).toBeNull();
+    expect(screen.queryByText("Courses de la semaine")).toBeNull();
+    expect(screen.queryByText("Details loisirs")).toBeDefined();
+
+    await userEvent.clear(expenseNameInput);
 
     expect(screen.queryByText("Besoin personnel")).toBeDefined();
     expect(screen.queryByText("Courses de la semaine")).toBeDefined();

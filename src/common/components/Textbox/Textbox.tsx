@@ -10,6 +10,7 @@ export const Textbox = ({
   register,
   testId,
   hasError,
+  onChange,
 }: TextboxProps) => (
   <input
     id={id}
@@ -19,6 +20,7 @@ export const Textbox = ({
     type={type}
     step={step}
     placeholder={placeholder}
+    onChange={onChange}
     {...register}
   />
 );
