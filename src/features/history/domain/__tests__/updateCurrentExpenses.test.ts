@@ -11,6 +11,7 @@ describe("updateCurrentExpenses()", () => {
     expect(
       updateCurrentExpenses(
         expenses,
+        "",
         "initial_value",
         "initial_value",
         OrderValue.MORE_RECENT
@@ -23,6 +24,7 @@ describe("updateCurrentExpenses()", () => {
     expect(
       updateCurrentExpenses(
         expensesNotSorted,
+        "",
         "initial_value",
         "initial_value",
         OrderValue.MORE_RECENT
@@ -35,6 +37,7 @@ describe("updateCurrentExpenses()", () => {
     expect(
       updateCurrentExpenses(
         expenses,
+        "",
         "initial_value",
         "initial_value",
         OrderValue.MORE_OLDER
@@ -46,6 +49,7 @@ describe("updateCurrentExpenses()", () => {
     expect(
       updateCurrentExpenses(
         expenses,
+        "",
         "initial_value",
         BudgetType.SAVED,
         OrderValue.MORE_RECENT
@@ -61,6 +65,7 @@ describe("updateCurrentExpenses()", () => {
     expect(
       updateCurrentExpenses(
         expensesToFilterAndSorted,
+        "",
         "initial_value",
         BudgetType.VARIABLE,
         OrderValue.MORE_RECENT
@@ -68,22 +73,25 @@ describe("updateCurrentExpenses()", () => {
     ).toEqual([{ ...MOCK_EXPENSE, date: "2022-01-18" }, MOCK_EXPENSE]);
   });
 
+  const complexExpenses = [
+    MOCK_EXPENSE,
+    {
+      ...MOCK_EXPENSE,
+      budget: { id: "3", name: "Others", type: BudgetType.VARIABLE },
+    },
+    {
+      ...MOCK_EXPENSE,
+      details: "Test",
+      budget: { id: "1", name: "Others", type: BudgetType.VARIABLE },
+    },
+    MOCK_EXPENSE_SAVED,
+  ];
+
   test("need changement - filter by budget id and by budget type", () => {
-    const expensesToFilterAndSorted = [
-      MOCK_EXPENSE,
-      {
-        ...MOCK_EXPENSE,
-        budget: { id: "3", name: "Others", type: BudgetType.VARIABLE },
-      },
-      {
-        ...MOCK_EXPENSE,
-        budget: { id: "1", name: "Others", type: BudgetType.VARIABLE },
-      },
-      MOCK_EXPENSE_SAVED,
-    ];
     expect(
       updateCurrentExpenses(
-        expensesToFilterAndSorted,
+        complexExpenses,
+        "",
         "1",
         BudgetType.VARIABLE,
         OrderValue.MORE_RECENT
@@ -92,8 +100,21 @@ describe("updateCurrentExpenses()", () => {
       MOCK_EXPENSE,
       {
         ...MOCK_EXPENSE,
+        details: "Test",
         budget: { id: "1", name: "Others", type: BudgetType.VARIABLE },
       },
     ]);
+  });
+
+  test("need changement - filter by expense name, budget id and by budget type", () => {
+    expect(
+      updateCurrentExpenses(
+        complexExpenses,
+        "Deta",
+        "1",
+        BudgetType.VARIABLE,
+        OrderValue.MORE_RECENT
+      )
+    ).toEqual([MOCK_EXPENSE]);
   });
 });

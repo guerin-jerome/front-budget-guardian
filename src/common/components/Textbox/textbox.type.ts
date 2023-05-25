@@ -1,3 +1,4 @@
+import { ChangeEventHandler } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 
 export type TextboxProps = Partial<{
@@ -8,4 +9,5 @@ export type TextboxProps = Partial<{
   step: number;
   testId: string;
   hasError: boolean;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 }>;
