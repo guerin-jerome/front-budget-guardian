@@ -115,7 +115,7 @@ describe("<ExpenseTracking />", () => {
     renderWithAllProviders(<ExpenseTracking />);
 
     const actionsButtons = screen.getAllByRole("button");
-    const removeButton = actionsButtons[1];
+    const removeButton = actionsButtons[0];
     const budgetCurrentValue = screen.getByText("5,60€ / 100,00€");
     expect(removeButton).toBeDefined();
     expect(budgetCurrentValue).toBeDefined();
@@ -140,7 +140,7 @@ describe("<ExpenseTracking />", () => {
     renderWithAllProviders(<ExpenseTracking />);
 
     const actionsButtons = screen.getAllByRole("button");
-    const removeButton = actionsButtons[1];
+    const removeButton = actionsButtons[0];
     const savedCurrentValue = screen.getByText("200,00€");
     expect(removeButton).toBeDefined();
     expect(savedCurrentValue).toBeDefined();
@@ -163,7 +163,7 @@ describe("<ExpenseTracking />", () => {
     renderWithAllProviders(<ExpenseTracking />);
 
     const actionsButtons = screen.getAllByRole("button");
-    const addButton = actionsButtons[0];
+    const addButton = actionsButtons[1];
     const budgetCurrentValue = screen.getByText("5,60€ / 100,00€");
     expect(addButton).toBeDefined();
     expect(budgetCurrentValue).toBeDefined();
@@ -188,7 +188,7 @@ describe("<ExpenseTracking />", () => {
     renderWithAllProviders(<ExpenseTracking />);
 
     const actionsButtons = screen.getAllByRole("button");
-    const addButton = actionsButtons[0];
+    const addButton = actionsButtons[1];
     const savedCurrentValue = screen.getByText("200,00€");
     expect(addButton).toBeDefined();
     expect(savedCurrentValue).toBeDefined();
