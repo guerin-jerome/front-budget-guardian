@@ -1,7 +1,0 @@
-Reste à faire :
-- TU composants
-- TI global
-- router
-- services
-- msw
-- config 80% sonarqube

@@ -1,6 +1,24 @@
 # Changelog
 
-Version actuelle : 0.3.0
+Version actuelle : 0.4.0
+
+---
+
+## 0.4.0
+
+**Added**
+
+Historique des dépenses :
+
+- Mise en place du header
+- Mise en place des cartes de dépenses
+- Bouton réinitialiser
+- Mise en place des tris et filtres des dépenses
+- Interactions utilisateurs
+
+**Fix**
+
+- Sonarcloud issues
 
 ---
 
