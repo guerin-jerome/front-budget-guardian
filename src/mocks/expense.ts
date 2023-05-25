@@ -57,8 +57,12 @@ export const MOCK_REMOVE_EXPENSE_SAVED: Expense = {
     name: "Placement financier",
   },
   amount: -100,
-  date: "2023-02-05",
+  date: "2023-02-06",
   details: "Besoin personnel",
 };
 
-export const MOCK_EXPENSES: Expense[] = [MOCK_EXPENSE, MOCK_EXPENSE_COURSES];
+export const MOCK_EXPENSES: Expense[] = [
+  MOCK_EXPENSE,
+  MOCK_EXPENSE_COURSES,
+  MOCK_REMOVE_EXPENSE_SAVED,
+];
