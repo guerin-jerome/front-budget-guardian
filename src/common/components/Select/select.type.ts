@@ -1,3 +1,4 @@
+import { ChangeEventHandler } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 
 export type SelectOption = {
@@ -14,4 +15,5 @@ export type SelectProps = {
   defaultValue?: string;
   isDefaultDisabled?: boolean;
   defaultText?: string;
+  onChange?: ChangeEventHandler<HTMLSelectElement>;
 };

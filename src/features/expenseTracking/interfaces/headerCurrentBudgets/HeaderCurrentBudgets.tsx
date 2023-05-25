@@ -33,18 +33,18 @@ export const HeaderCurrentBudgets = ({
       {!isFormDisplay && (
         <div className="header-current-budgets-actions">
           <Button
-            onClick={handleClickAddButton}
-            isIconMode
-            appearence={ButtonAppearence.SUCCESS}
-          >
-            +
-          </Button>
-          <Button
             onClick={handleClickRemoveButton}
             isIconMode
             appearence={ButtonAppearence.DANGER}
           >
             -
+          </Button>
+          <Button
+            onClick={handleClickAddButton}
+            isIconMode
+            appearence={ButtonAppearence.SUCCESS}
+          >
+            +
           </Button>
           <Button
             onClick={handleClickResetButton}
