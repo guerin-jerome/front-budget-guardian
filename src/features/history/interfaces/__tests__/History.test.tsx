@@ -71,19 +71,39 @@ describe("<History />", () => {
     expect(emptyExpenseText).toBeDefined();
   });
 
-  test("filter by budget type", async () => {
+  test("filter by budget type and after by name", async () => {
     renderWithAllProviders(<History />);
 
-    const expenseLoisir = screen.getByText("Details loisirs");
-    expect(expenseLoisir).toBeDefined();
+    expect(screen.queryByText("Besoin personnel")).toBeDefined();
+    expect(screen.queryByText("Courses de la semaine")).toBeDefined();
+    expect(screen.queryByText("Details loisirs")).toBeDefined();
 
-    const sortByDateSelect = screen.getByRole("combobox", {
+    const budgetTypeSelect = screen.getByRole("combobox", {
       name: BUDGET_TYPE_SELECT_LABEL,
     });
 
-    await userEvent.selectOptions(sortByDateSelect, BudgetTypeLibelle.SAVED);
+    await userEvent.selectOptions(budgetTypeSelect, BudgetTypeLibelle.VARIABLE);
 
+    expect(screen.queryByText("Placement financier")).toBeNull();
+    expect(screen.queryAllByText("Courses").length).toEqual(2);
+    expect(screen.queryByText("Details loisirs")).toBeDefined();
+
+    const budgetNameSelect = screen.getByRole("combobox", {
+      name: BUDGET_IMPACTED_SELECT_LABEL,
+    });
+
+    await userEvent.selectOptions(budgetNameSelect, "Courses");
+
+    expect(screen.queryByText("Placement financier")).toBeNull();
     expect(screen.queryByText("Details loisirs")).toBeNull();
+    expect(screen.queryAllByText("Courses").length).toEqual(2);
+
+    await userEvent.selectOptions(budgetTypeSelect, "Tous");
+    await userEvent.selectOptions(budgetNameSelect, "Tous");
+
+    expect(screen.queryByText("Details loisirs")).toBeDefined();
+    expect(screen.queryAllByText("Placement financier").length).toEqual(2);
+    expect(screen.queryAllByText("Courses").length).toEqual(2);
   });
 
   test("change order by date", async () => {

@@ -1,4 +1,8 @@
-import { buildBudgetTypeSelectValues, updateCurrentExpenses } from "../domain";
+import {
+  buildBudgetTypeSelectValues,
+  updateCurrentExpenses,
+  buildBudgetNameSelectValues,
+} from "../domain";
 import { ExpensesContext } from "@/context/ExpensesContext";
 import { BudgetType } from "@/entities/Budget";
 import { Expense } from "@/entities/Expense";
@@ -18,20 +22,35 @@ export enum OrderValue {
 export type BudgetTypeFilter = BudgetType | "initial_value";
 
 export const useHeaderHistory = (
+  expenseList: Expense[],
   setExpenseList: Dispatch<SetStateAction<Expense[]>>
 ) => {
   const { expenses, setExpenses } = useContext(ExpensesContext);
 
+  const [budgetIdFilter, setBudgetIdFilter] = useState("initial_value");
   const [budgetTypeFilter, setBudgetTypeFilter] =
     useState<BudgetTypeFilter>("initial_value");
   const [orderOfSortByDate, setOrderOfSortByDate] = useState(
     OrderValue.MORE_RECENT
   );
 
-  const budgetTypeSelectValues = buildBudgetTypeSelectValues(expenses);
+  const budgetNameSelectValues = buildBudgetNameSelectValues(expenseList);
+  const budgetTypeSelectValues = buildBudgetTypeSelectValues(expenseList);
   const sortByDateSelectValues = [
     { text: "Moins récent", value: "more-older" },
   ];
+
+  const handleChangeBudgetName = (event: ChangeEvent<HTMLSelectElement>) => {
+    const { value: idBudgetSelected } = event.target;
+    setBudgetIdFilter(idBudgetSelected);
+    const expensesFilterAndSorted = updateCurrentExpenses(
+      expenses,
+      idBudgetSelected,
+      budgetTypeFilter,
+      orderOfSortByDate
+    );
+    setExpenseList(expensesFilterAndSorted);
+  };
 
   const handleChangeBudgetType = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target;
@@ -39,6 +58,7 @@ export const useHeaderHistory = (
     setBudgetTypeFilter(typeSelected);
     const expensesFilterAndSorted = updateCurrentExpenses(
       expenses,
+      budgetIdFilter,
       typeSelected,
       orderOfSortByDate
     );
@@ -51,6 +71,7 @@ export const useHeaderHistory = (
     setOrderOfSortByDate(sortDateSelected);
     const expensesFilterAndSorted = updateCurrentExpenses(
       expenses,
+      budgetIdFilter,
       budgetTypeFilter,
       sortDateSelected
     );
@@ -62,8 +83,10 @@ export const useHeaderHistory = (
   };
 
   return {
+    budgetNameSelectValues,
     budgetTypeSelectValues,
     sortByDateSelectValues,
+    handleChangeBudgetName,
     handleChangeBudgetType,
     handleChangeSortDate,
     handleClickReset,

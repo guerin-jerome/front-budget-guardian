@@ -18,17 +18,23 @@ import { Expense } from "@/entities/Expense";
 import "./style.css";
 
 type HeaderHistory = {
+  expenseList: Expense[];
   setExpenseList: Dispatch<SetStateAction<Expense[]>>;
 };
 
-export const HeaderHistory = ({ setExpenseList }: HeaderHistory) => {
+export const HeaderHistory = ({
+  expenseList,
+  setExpenseList,
+}: HeaderHistory) => {
   const {
+    budgetNameSelectValues,
     budgetTypeSelectValues,
     sortByDateSelectValues,
+    handleChangeBudgetName,
     handleChangeBudgetType,
     handleChangeSortDate,
     handleClickReset,
-  } = useHeaderHistory(setExpenseList);
+  } = useHeaderHistory(expenseList, setExpenseList);
 
   return (
     <header className="header-history">
@@ -45,10 +51,11 @@ export const HeaderHistory = ({ setExpenseList }: HeaderHistory) => {
         </Label>
         <Select
           id="filter_budget_impacted"
-          options={[]}
+          options={budgetNameSelectValues}
           defaultText="Tous"
           defaultValue="initial_value"
           isDefaultDisabled={false}
+          onChange={handleChangeBudgetName}
         />
       </div>
       <div className="filter">
