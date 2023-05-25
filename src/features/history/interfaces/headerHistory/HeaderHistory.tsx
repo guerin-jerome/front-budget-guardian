@@ -22,8 +22,13 @@ type HeaderHistory = {
 };
 
 export const HeaderHistory = ({ setExpenseList }: HeaderHistory) => {
-  const { sortByDateSelectValues, handleClickReset, handleChangeSortDate } =
-    useHeaderHistory(setExpenseList);
+  const {
+    budgetTypeSelectValues,
+    sortByDateSelectValues,
+    handleChangeBudgetType,
+    handleChangeSortDate,
+    handleClickReset,
+  } = useHeaderHistory(setExpenseList);
 
   return (
     <header className="header-history">
@@ -50,10 +55,11 @@ export const HeaderHistory = ({ setExpenseList }: HeaderHistory) => {
         <Label htmlFor="filter_budget_type">{BUDGET_TYPE_SELECT_LABEL}</Label>
         <Select
           id="filter_budget_type"
-          options={[]}
+          options={budgetTypeSelectValues}
           defaultText="Tous"
           defaultValue="initial_value"
           isDefaultDisabled={false}
+          onChange={handleChangeBudgetType}
         />
       </div>
       <div className="filter">

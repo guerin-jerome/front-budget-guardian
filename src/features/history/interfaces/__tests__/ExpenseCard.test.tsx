@@ -31,7 +31,7 @@ describe("<ExpenseCard />", () => {
 
     const expenseValue = screen.getByText(/-100,00€/i);
     const expenseDetails = screen.getByText("Besoin personnel");
-    const expenseDateFormatted = screen.getByText("Dimanche 5 février 2023");
+    const expenseDateFormatted = screen.getByText("Lundi 6 février 2023");
     const budgetLabel = screen.getByText("Budget :");
     const budgetValue = screen.getByText("Placement financier");
     const budgetTypeLabel = screen.getByText("Type :");

@@ -1,4 +1,4 @@
-import { Budget, BudgetType, BudgetTypeLibelle } from "@/entities/Budget";
+import { BudgetType, BudgetTypeLibelle } from "@/entities/Budget";
 
 /**
  * Attribut un libellé équivalent au type de budget pour l'UI
