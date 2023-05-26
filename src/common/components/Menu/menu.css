@@ -34,7 +34,7 @@
 }
 
 .nav-link:after {
-  background-color: #0077c2;
+  background-color: #4682b4;
   content: "";
   height: 2.5px;
   left: 0;
@@ -46,7 +46,7 @@
 }
 
 .nav-link.active {
-  color: #0077c2;
+  color: #4682b4;
 }
 
 .nav-link:hover:after,

@@ -3,8 +3,7 @@ import { MouseEventHandler, ReactNode } from "react";
 export enum ButtonAppearence {
   PRIMARY = "primary",
   SECONDARY = "secondary",
-  DANGER = "danger",
-  SUCCESS = "success",
+  TERTIARY = "tertiary",
 }
 
 export type ButtonProps = Partial<{
