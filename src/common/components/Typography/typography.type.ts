@@ -7,3 +7,7 @@ export type TitleProps = PropsWithChildren & {
 export type BoldProps = PropsWithChildren & {
   size?: number;
 };
+
+export type TextProps = PropsWithChildren & {
+  className?: string;
+};

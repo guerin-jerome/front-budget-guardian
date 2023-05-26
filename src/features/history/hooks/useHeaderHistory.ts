@@ -1,3 +1,4 @@
+import { MobileContext } from "@/context/MobileContext";
 import {
   buildBudgetTypeSelectValues,
   updateCurrentExpenses,
@@ -25,6 +26,7 @@ export const useHeaderHistory = (
   expenseList: Expense[],
   setExpenseList: Dispatch<SetStateAction<Expense[]>>
 ) => {
+  const isMobileDevice = useContext(MobileContext);
   const { expenses, setExpenses } = useContext(ExpensesContext);
 
   const [expenseNameFilter, setExpenseNameFilter] = useState("");

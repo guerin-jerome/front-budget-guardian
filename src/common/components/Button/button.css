@@ -19,18 +19,15 @@ button.icon {
   padding: 10px;
 }
 
-button.success {
-  background-color: #218c74;
-}
-
-button.danger {
-  background-color: #b33939;
-}
-
 button.primary {
-  background-color: #0077c2;
+  background-color: #4682b4;
 }
 
 button.secondary {
   background-color: #333;
+}
+
+button.tertiary {
+  background-color: white;
+  border: 1.5px solid #333;
 }

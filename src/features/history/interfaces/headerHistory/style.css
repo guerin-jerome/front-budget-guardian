@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 300px repeat(3, 1fr) 38px;
   column-gap: 10px;
+  margin-bottom: 20px;
 }
 
 .header-history input {
@@ -15,15 +16,18 @@
 @media only screen and (max-width: 750px) {
   .header-history {
     display: grid;
-    grid-template-columns: repeat(3, 1fr) 38px;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr 38px;
+    grid-template-rows: repeat(4, 1fr);
+    row-gap: 10px;
     column-gap: 10px;
-    row-gap: 15px;
   }
 
-  .header-history .filter:first-child {
+  .header-history .filter {
     grid-column: 1 / span 4;
-    grid-row: 1;
+  }
+
+  .header-history .filter.filter-date {
+    grid-column: 1 / span 3;
   }
 
   .header-history input {
