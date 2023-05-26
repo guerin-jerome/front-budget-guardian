@@ -5,9 +5,9 @@
 
 .progress {
   height: 100%;
-  background-color: #0077c2;
+  background-color: #4682b4;
 }
 
 .progress.error {
-  background-color: #b33939;
+  background-color: #aa4a44;
 }

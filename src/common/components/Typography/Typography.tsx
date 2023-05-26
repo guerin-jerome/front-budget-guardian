@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { BoldProps, TitleProps } from "./typography.type";
+import { BoldProps, TextProps, TitleProps } from "./typography.type";
 import "./typography.css";
 
 const Title = ({ level, children }: TitleProps) => {
@@ -13,7 +13,9 @@ const Title = ({ level, children }: TitleProps) => {
   }
 };
 
-const Text = ({ children }: PropsWithChildren) => <p>{children}</p>;
+const Text = ({ children, className }: TextProps) => (
+  <p className={className}>{children}</p>
+);
 
 const Muted = ({ children }: PropsWithChildren) => (
   <span className="muted">{children}</span>

@@ -8,11 +8,19 @@
   margin: 0;
 }
 
-.expense-card .bold.positive {
-  color: #218c74;
+.expense-informations > p.positive {
+  padding: 8px;
+  color: white;
+  font-weight: lighter;
+  background-color: #4682b4;
+  border-radius: 5px;
 }
-.expense-card .bold.negative {
-  color: #b33939;
+.expense-informations > p.negative {
+  padding: 8px;
+  color: white;
+  font-weight: lighter;
+  background-color: #aa4a44;
+  border-radius: 5px;
 }
 
 .expense-informations {
@@ -42,6 +50,10 @@
     flex-direction: column;
     align-items: baseline;
     justify-content: center;
+  }
+
+  .expense-informations > p {
+    margin-bottom: 5px;
   }
 
   .expense-budget-name {

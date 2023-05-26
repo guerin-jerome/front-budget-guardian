@@ -32,12 +32,12 @@ describe("<Button />", () => {
     expect(onClick).toHaveBeenCalled();
   });
 
-  it("renders well - danger submit", async () => {
+  it("renders well - secondary submit", async () => {
     render(
       <Button
         onClick={onClick}
         type="submit"
-        appearence={ButtonAppearence.DANGER}
+        appearence={ButtonAppearence.SECONDARY}
       >
         Hello
       </Button>
@@ -48,12 +48,12 @@ describe("<Button />", () => {
     expect(button).toBeDefined();
   });
 
-  it("renders well - success reset", async () => {
+  it("renders well - tertiary reset", async () => {
     render(
       <Button
         onClick={onClick}
         type="reset"
-        appearence={ButtonAppearence.SUCCESS}
+        appearence={ButtonAppearence.TERTIARY}
       >
         Hello
       </Button>

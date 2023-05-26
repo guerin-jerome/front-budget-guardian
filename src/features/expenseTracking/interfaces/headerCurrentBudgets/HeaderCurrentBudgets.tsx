@@ -35,21 +35,21 @@ export const HeaderCurrentBudgets = ({
           <Button
             onClick={handleClickRemoveButton}
             isIconMode
-            appearence={ButtonAppearence.DANGER}
+            appearence={ButtonAppearence.PRIMARY}
           >
             -
           </Button>
           <Button
             onClick={handleClickAddButton}
             isIconMode
-            appearence={ButtonAppearence.SUCCESS}
+            appearence={ButtonAppearence.SECONDARY}
           >
             +
           </Button>
           <Button
             onClick={handleClickResetButton}
             isIconMode
-            appearence={ButtonAppearence.SECONDARY}
+            appearence={ButtonAppearence.TERTIARY}
           >
             <ResetIcon />
           </Button>

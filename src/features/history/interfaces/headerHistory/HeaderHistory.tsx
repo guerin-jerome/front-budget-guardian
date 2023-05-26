@@ -71,7 +71,7 @@ export const HeaderHistory = ({
           onChange={handleChangeBudgetType}
         />
       </div>
-      <div className="filter">
+      <div className="filter filter-date">
         <Label htmlFor="sort_date">{SORT_ORDER_BUDGET_DATE_LABEL}</Label>
         <Select
           id="sort_date"
