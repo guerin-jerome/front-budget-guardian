@@ -18,6 +18,7 @@ export const HeaderCurrentBudgets = ({
   setDisplayedForm,
 }: HeaderCurrentBudgetsProps) => {
   const {
+    budgets,
     totalRemaining,
     handleClickResetButton,
     handleClickAddButton,
@@ -30,7 +31,7 @@ export const HeaderCurrentBudgets = ({
         {TOTAL_REMAINING_TITLE_SECTION}
         {totalRemaining}
       </Title>
-      {!isFormDisplay && (
+      {!isFormDisplay && !!budgets.length && (
         <div className="header-current-budgets-actions">
           <Button
             onClick={handleClickRemoveButton}

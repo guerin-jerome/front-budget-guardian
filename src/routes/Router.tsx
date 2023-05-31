@@ -4,6 +4,7 @@ import { PAGES, routes } from "./routes";
 import { ExpenseTracking } from "@/features/expenseTracking/interfaces";
 import { Home } from "@/features/home/interfaces";
 import { History } from "@/features/history/interfaces";
+import { BudgetsManagement } from "@/features/budgetsManagement/interfaces";
 
 export const Router = () => (
   <BrowserRouter>
@@ -16,7 +17,7 @@ export const Router = () => (
         />
         <Route
           path={routes[PAGES.BUDGETS_MANAGEMENT]}
-          element={<p>Budgets management</p>}
+          element={<BudgetsManagement />}
         />
         <Route path={routes[PAGES.HISTORY]} element={<History />} />
       </Route>

@@ -10,3 +10,6 @@ export const EXPENSE_AMOUNT_LABEL = "Montant";
  * Section de la liste des budgets en cours
  */
 export const TOTAL_REMAINING_TITLE_SECTION = "Total restant : ";
+
+export const NO_BUDGET_TEXT =
+  "Vous n'avez pas de budgets. Ajoutez-en un dans la section gestion des budgets.";

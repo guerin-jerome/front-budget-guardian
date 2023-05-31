@@ -21,6 +21,7 @@ export const useHeaderCurrentBudget = (
   const handleClickResetButton = () => setBudgets!!(resetCurrentBudgets);
 
   return {
+    budgets,
     totalRemaining,
     handleClickResetButton,
     handleClickAddButton,
