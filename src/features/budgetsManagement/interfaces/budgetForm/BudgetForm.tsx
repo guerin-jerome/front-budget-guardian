@@ -97,16 +97,22 @@ export const BudgetForm = ({ setIsFormDisplay }: BudgetFormProps) => {
             hasError={!!errors.amount}
           />
         </div>
-        <Button isIconMode appearence={ButtonAppearence.PRIMARY} type="submit">
-          <ValidateIcon />
-        </Button>
-        <Button
-          onClick={handleClickCancel}
-          isIconMode
-          appearence={ButtonAppearence.SECONDARY}
-        >
-          <CancelIcon />
-        </Button>
+        <div className="budget-form-actions">
+          <Button
+            isIconMode
+            appearence={ButtonAppearence.PRIMARY}
+            type="submit"
+          >
+            <ValidateIcon />
+          </Button>
+          <Button
+            onClick={handleClickCancel}
+            isIconMode
+            appearence={ButtonAppearence.SECONDARY}
+          >
+            <CancelIcon />
+          </Button>
+        </div>
       </form>
     </Card>
   );
