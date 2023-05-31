@@ -11,7 +11,7 @@ import {
   DETAILS_INPUT_LABEL,
   SORT_ORDER_BUDGET_DATE_LABEL,
 } from "../label";
-import { TrashIcon } from "./TrashIcon";
+import { TrashIcon } from "@/common/components/Icon/TrashIcon";
 import { useHeaderHistory } from "../../hooks/useHeaderHistory";
 import { Dispatch, SetStateAction } from "react";
 import { Expense } from "@/entities/Expense";

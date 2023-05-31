@@ -1,0 +1,11 @@
+.budget-card {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) auto;
+  column-gap: 10px;
+}
+
+.budget-card-item {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}

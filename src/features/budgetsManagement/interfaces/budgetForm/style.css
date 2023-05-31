@@ -1,0 +1,17 @@
+.budget-form-card {
+  margin-bottom: 20px;
+}
+
+.budget-form {
+  display: grid;
+  grid-template-columns: repeat(2, 3fr) 2fr auto auto;
+  column-gap: 10px;
+}
+
+.budget-form button {
+  align-self: flex-end;
+}
+
+.budget-form-item input {
+  width: calc(100% - 18px);
+}
