@@ -1,6 +1,23 @@
 # Changelog
 
-Version actuelle : 0.4.0
+Version actuelle : 0.5.0
+
+---
+
+## 0.5.0
+
+**Added**
+
+Gestion des budgets :
+
+- User interfaces
+- User interactions
+- Responsive style
+
+Transverse :
+
+- Analytics add-on Vercel
+- Recette visuel UI
 
 ---
 
