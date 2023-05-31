@@ -36,6 +36,11 @@
   justify-content: center;
 }
 
+.expense-budget-name > span,
+.expense-budget-type > span {
+  margin-bottom: 4px;
+}
+
 @media only screen and (max-width: 750px) {
   .expense-card {
     display: grid;

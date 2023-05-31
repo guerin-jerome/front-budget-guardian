@@ -1,10 +1,6 @@
 import { BudgetType, BudgetTypeLibelle } from "@/entities/Budget";
+import { replacePointByComma } from "./string";
 
-/**
- * Attribut un libellé équivalent au type de budget pour l'UI
- * @param budget
- * @returns {BudgetTypeLibelle}
- */
 export const buildLibelleTypeBudget = (type: BudgetType): BudgetTypeLibelle => {
   switch (type) {
     case BudgetType.FIXE:
@@ -15,3 +11,6 @@ export const buildLibelleTypeBudget = (type: BudgetType): BudgetTypeLibelle => {
       return BudgetTypeLibelle.SAVED;
   }
 };
+
+export const formatNumberToPrice = (number: number) =>
+  replacePointByComma(`${number.toFixed(2)} €`);

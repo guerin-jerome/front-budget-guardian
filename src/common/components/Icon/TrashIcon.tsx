@@ -1,10 +1,18 @@
-export const TrashIcon = () => (
+type TrashIconProps = {
+  color?: string;
+  strokeWidth?: string;
+};
+
+export const TrashIcon = ({
+  color = "currentColor",
+  strokeWidth = "1.5",
+}: TrashIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
-    strokeWidth="1.5"
-    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    stroke={color}
     className="w-6 h-6"
   >
     <path
